@@ -11,7 +11,6 @@ void print_path(int i, int* path, string& add);
 bool output_check(string, vector<string>&);
 
 int main() {
-	setlocale(LC_ALL, "ru");
 	string graph_path;
 	graph_path = "RR-1graphs/graphN.txt";
 	vector<string> our_result;
@@ -41,8 +40,8 @@ void processing_graph(string& graph_path, vector<string>& our_result) {
 	while (!file.eof()) {
 		getline(file, str);
 		istringstream tempstring(str);
-		tempstring >> a;	//первый элемент игнорируется (тк нужны только соседи вершины)
-		if (str.find(" ") == -1) { //проверка на наличие соседей у графа
+		tempstring >> a;
+		if (str.find(" ") == -1) { 
 			unrelated_vertex.push_back(stoi(a));
 			temp.push_back(stoi(a));
 			graph.push_back(temp);
