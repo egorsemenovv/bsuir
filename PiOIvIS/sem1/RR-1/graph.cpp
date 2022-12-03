@@ -19,13 +19,18 @@ int main() {
 		processing_graph(graph_path, our_result);
 		output_check(graph_path, our_result) ? cout << "Answers are correct" << endl : cout << "Answers aren`t correct" << endl;
 		our_result.clear();
-		cont();
+		if (i == '5') {
+			return 0;
+		}
+		else {
+			cont();
+		}
 	}
 }
 
 void processing_graph(string& graph_path, vector<string>& our_result) {
 	int N = 0, element_number = 0;
-	bool unrelated_flag=false;
+	bool unrelated_flag = false;
 	string a;
 	vector<vector<int>> graph;
 	vector<int> temp, unrelated_vertex;
@@ -41,7 +46,7 @@ void processing_graph(string& graph_path, vector<string>& our_result) {
 		getline(file, str);
 		istringstream tempstring(str);
 		tempstring >> a;
-		if (str.find(" ") == -1) { 
+		if (str.find(" ") == -1) {
 			unrelated_vertex.push_back(stoi(a));
 			temp.push_back(stoi(a));
 			graph.push_back(temp);
@@ -70,10 +75,10 @@ void processing_graph(string& graph_path, vector<string>& our_result) {
 		}
 		unrelated_flag = false;
 	}
-	file.close(); 
+	file.close();
 }
 
-void BreadthFirstSearch(int N,int vertex, vector<vector<int>> &graph, vector<string>& our_result) {
+void BreadthFirstSearch(int N, int vertex, vector<vector<int>>& graph, vector<string>& our_result) {
 	bool* burned = new bool[N];
 	int* path = new int[N];
 	for (int i = 0; i < N; i++) {
@@ -98,8 +103,8 @@ void BreadthFirstSearch(int N,int vertex, vector<vector<int>> &graph, vector<str
 	}
 	string add;
 	for (int i = 0; i < N; i++) {
-		if (path[i]<0) {
-			cout <<"Unrelated vertex - "<<i<<endl;
+		if (path[i] < 0) {
+			cout << "Unrelated vertex - " << i << endl;
 			add = "Unrelated vertex - " + to_string(i);
 			our_result.push_back(add);
 		}
@@ -129,8 +134,8 @@ void cont() {
 	if (x == 121) {
 		system("cls");
 	}
-	else if(x == 110) {
-		 exit(0);
+	else if (x == 110) {
+		exit(0);
 	}
 	else {
 		cout << endl;
@@ -142,7 +147,7 @@ bool output_check(string expected, vector<string>& our_result) {
 	string temp1;
 	int N1 = 0;
 
-	expected.erase(expected.end()-4,expected.end());
+	expected.erase(expected.end() - 4, expected.end());
 	expected += "expected.txt";
 	ifstream expected_result;
 	expected_result.open(expected);
