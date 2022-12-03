@@ -26,7 +26,7 @@
 
 
 На вход программе подаётся граф, в виде списка смежности (вершины в нём представлены в виде порядковых номеров, начиная от 0). Программа использует алгоритм поиска в ширину (__Breadth-first-search__). Поиск в ширину подразумевает поуровневое исследование графа: вначале посещается корень – произвольно выбранная вершина, затем – все потомки данной вершины, после этого посещаются потомки потомков и т.д. Вершины просматриваются в порядке возрастания их расстояния от корня.
-![](RR-1graphs\graph-images\50cde188f7b54a887e482b9447dc7abb.gif)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/50cde188f7b54a887e482b9447dc7abb.gif)
 
 Основную идею алгоритма можно понимать как процесс «поджигания» графа: на нулевом шаге мы поджигаем корневую вершину, а на каждом следующем шаге огонь с каждой уже горящей вершины перекидывается на всех её соседей, в конечном счете поджигая весь граф.
  Пошаговая работа алгоритма:
@@ -49,7 +49,7 @@
 
 * __Первый тест__
 
-![](RR-1graphs\graph-images\graph1.png)![](RR-1graphs\graph-images\graph1test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1test.jpg)
 
 Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 0.
 
@@ -63,15 +63,23 @@
 
 * __Второй тест__
 
-![](RR-1graphs\graph-images\graph2.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2test.jpg)
 
-Для данного графа предлагается рассмотреть решение в программе.
+Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 4.
+
+Получаем что кратчайший путь из 4 в 0 - ``` 4 1 0```;
+
+Получаем что кратчайший путь из 4 в 1 - ``` 4 1```;
+
+Получаем что кратчайший путь из 4 в 2 - ``` 4 2```;
+
+Получаем что кратчайший путь из 4 в 3 - ``` 4 3```;
 * __Третий тест__
 
-![](RR-1graphs\graph-images\graph3.png)
-![](RR-1graphs\graph-images\graph31test.jpg)
-![](RR-1graphs\graph-images\graph32test.jpg)
-![](RR-1graphs\graph-images\graph33test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph31test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph32test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph33test.jpg)
 
 Данный граф интересен для нас тем, что, чем дальше выбранная вершина от 0, тем меньше существует вершин, в которые можно попасть из выбранной вершины.
 
@@ -85,9 +93,10 @@
 
 * __Четвёртый тест__
 
-![](RR-1graphs\graph-images\graph4.png)![](RR-1graphs\graph-images\graph4test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4test.jpg)
 
 У данного графа каждая вершина связана, с каждой. Для каждой вершины кратчайший путь до другой вершины будет состоять всего из одного шага.
+
 Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 3.
 
 Получаем что кратчайший путь из 3 в 0 - ``` 3 0 ```;
@@ -108,27 +117,31 @@
 
 * __Пятый тест__
 
-![](RR-1graphs\graph-images\graph5.png)![](RR-1graphs\graph-images\graph5test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph52.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5test1.jpg)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5test2.jpg)
 
-Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 0.
+У данного графа вершины 4 и 7 связаны только с вершиной 2. Кратчайшими путями из вершин 4 и 7 до других вершин будут являться те же кратчайшие пути, что и из вершины 2, за исключением того, что сначала надо будет попасть в вершину 2.
+Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 3.
 
-Получаем что кратчайший путь из 0 в 1 - ``` 0 1 ```;
+Получаем что кратчайший путь из 7 в 0 - ``` 7 2 0```;
 
-Получаем что кратчайший путь из 0 в 2 - ``` 0 1 2```;
+Получаем что кратчайший путь из 7 в 1 - ``` 7 2 0 1```;
 
-Получаем что кратчайший путь из 0 в 3 - ``` 0 1 2 3```;
+Получаем что кратчайший путь из 7 в 2 - ``` 7 2```;
 
-Получаем что кратчайший путь из 0 в 4 - ``` 0 1 2 3 4```;
+Получаем что кратчайший путь из 7 в 3 - ``` 7 2 0 3```;
 
-Получаем что кратчайший путь из 0 в 5 - ``` 0 1 2 3 4 5```;
+Получаем что кратчайший путь из 7 в 4 - ``` 7 2 4```;
 
-Получаем что кратчайший путь из 0 в 6 - ``` 0 1 2 3 4 5 6```;
+Получаем что кратчайший путь из 7 в 5 - ``` 7 2 5```;
 
-Получаем что кратчайший путь из 0 в 7 - ``` 0 1 2 3 4 5 6 7```;
+Получаем что кратчайший путь из 7 в 6 - ``` 7 2 0 1 6```;
 
-Получаем что кратчайший путь из 0 в 8 - ``` 0 1 2 3 4 5 6 7 8```;
+Получаем что кратчайший путь из 7 в 8 - ``` 7 2 0 3 8```;
 
-Получаем что кратчайший путь из 0 в 9 - ``` 0 1 2 3 4 5 6 7 8 9```;
+Получаем что кратчайший путь из 7 в 9 - ``` 7 2 5 9```;
+
+Получаем что кратчайший путь из 7 в 10 - ``` 7 2 5 9 10```;
 
 </details>
 
