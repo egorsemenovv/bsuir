@@ -49,7 +49,13 @@
 
 * __Первый тест__
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1treeanswers.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1test.jpg)
+
+В данном примере строится дерево кратчайших путей (в виде списка смежности), 0 - корневая вершина.
 
 Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 0.
 
@@ -63,7 +69,13 @@
 
 * __Второй тест__
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2treeanswers.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2test.jpg)
+
+В данном примере строится дерево кратчайших путей (в виде списка смежности), 4 - корневая вершина.
 
 Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 4.
 
@@ -77,9 +89,16 @@
 * __Третий тест__
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3treeanswers.png)
+
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph31test.jpg)
+
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph32test.jpg)
+
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph33test.jpg)
+
+В данном примере строится дерево кратчайших путей (в виде списка смежности), 0 - корневая вершина.
 
 Данный граф интересен для нас тем, что, чем дальше выбранная вершина от 0, тем меньше существует вершин, в которые можно попасть из выбранной вершины.
 
@@ -93,7 +112,13 @@
 
 * __Четвёртый тест__
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4test.jpg)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4treeanswers.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4test.jpg)
+
+В данном примере строится дерево кратчайших путей (в виде списка смежности), 3 - корневая вершина.
 
 У данного графа каждая вершина связана, с каждой. Для каждой вершины кратчайший путь до другой вершины будет состоять всего из одного шага.
 
@@ -118,7 +143,12 @@
 * __Пятый тест__
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph52.png)
+
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5treeanswers.png)
+
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5test1.jpg)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5test2.jpg)
+
+В данном примере строится дерево кратчайших путей (в виде списка смежности), 2 - корневая вершина.
 
 У данного графа вершины 4 и 7 связаны только с вершиной 2. Кратчайшими путями из вершин 4 и 7 до других вершин будут являться те же кратчайшие пути, что и из вершины 2, за исключением того, что сначала надо будет попасть в вершину 2.
 Рассмотрим нахождение кратчайших путей, взяв за корневую вершину 3.
