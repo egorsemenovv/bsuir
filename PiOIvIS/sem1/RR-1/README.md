@@ -51,7 +51,7 @@
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1.png)
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1treeanswers.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1treeanswer.png)
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph1test.jpg)
 
@@ -71,7 +71,7 @@
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2.png)
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2treeanswers.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2treeanswer.png)
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph2test.jpg)
 
@@ -90,7 +90,7 @@
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3.png)
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3treeanswers.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph3treeanswer.png)
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph31test.jpg)
 
@@ -114,7 +114,7 @@
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4.png)
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4treeanswers.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4treeanswer.png)
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph4test.jpg)
 
@@ -144,7 +144,7 @@
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph52.png)
 
-![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5treeanswers.png)
+![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5tree.png)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5treeanswer.png)
 
 ![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5test1.jpg)![](https://github.com/SemenEgorov/bsuir/blob/main/PiOIvIS/sem1/RR-1/RR-1graphs/graph-images/graph5test2.jpg)
 
