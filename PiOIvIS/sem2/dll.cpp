@@ -20,17 +20,21 @@ private:
 
 	bool is_empty();
 
-	Node& findElement(int);
+	Node& findElement(int) const;
 
 public:
 
 	DoublyLinkedList();
 	DoublyLinkedList(Type);
+	DoublyLinkedList(const DoublyLinkedList<Type>&);
 	~DoublyLinkedList();
 
-	void push_back(Type);
-	void push_front(Type);
-	void add(Type, int);
+	void push_back(const Type&);
+	void push_front(const Type&);
+	DoublyLinkedList<Type>& add(const Type&, int);
+	DoublyLinkedList<Type>& add(const Type[], int, int);
+	DoublyLinkedList<Type>& add(const DoublyLinkedList<Type>&, int);
+	DoublyLinkedList<Type>& add(const DoublyLinkedList<Type>&);
 	void erase(int);
 
 	int Size();
@@ -42,6 +46,10 @@ public:
 
 
 	Type& operator[](int);
+	Type operator[](int) const;
+	const DoublyLinkedList<Type>& operator=(const DoublyLinkedList<Type>&);
+	bool operator==(const DoublyLinkedList<Type>&);
+	bool operator!=(const DoublyLinkedList<Type>&);
 
 };
 
@@ -62,17 +70,30 @@ DoublyLinkedList<Type>::DoublyLinkedList(Type item)
 	size = 1;
 }
 
+template<typename Type>
+DoublyLinkedList<Type>::DoublyLinkedList(const DoublyLinkedList<Type>& obj) {
+	*this = obj;
+}
+
 template <typename Type>
 DoublyLinkedList<Type>::~DoublyLinkedList() {
-
+	DoublyLinkedList<Type>::Node* temp = first;
+	DoublyLinkedList<Type>::Node* temp1;
+	while (temp) {
+		temp1 = temp;
+		temp = temp->next;
+		delete temp1;
+	}
+	first = last = nullptr;
 }
 
 template <typename Type>
 bool DoublyLinkedList<Type>::is_empty() {
 	return first == nullptr;
 }
+
 template <typename Type>
-typename DoublyLinkedList<Type>::Node& DoublyLinkedList<Type>::findElement(int pos) {
+typename DoublyLinkedList<Type>::Node& DoublyLinkedList<Type>::findElement(int pos) const {
 	DoublyLinkedList<Type>::Node* current = first;
 	if (pos <= 0)
 		return *first;
@@ -85,7 +106,7 @@ typename DoublyLinkedList<Type>::Node& DoublyLinkedList<Type>::findElement(int p
 }
 
 template <typename Type>
-void DoublyLinkedList<Type>::push_back(Type item) {
+void DoublyLinkedList<Type>::push_back(const Type& item) {
 	DoublyLinkedList<Type>::Node* temp = new DoublyLinkedList<Type>::Node;
 	temp->item = item;
 	if (is_empty()) {
@@ -100,7 +121,7 @@ void DoublyLinkedList<Type>::push_back(Type item) {
 }
 
 template <typename Type>
-void DoublyLinkedList<Type>::push_front(Type item) {
+void DoublyLinkedList<Type>::push_front(const Type& item) {
 	DoublyLinkedList<Type>::Node* temp = new DoublyLinkedList<Type>::Node;
 	temp->item = item;
 	if (is_empty()) {
@@ -113,29 +134,62 @@ void DoublyLinkedList<Type>::push_front(Type item) {
 	first = temp;
 	size += 1;
 }
+
 template <typename Type>
-void DoublyLinkedList<Type>::add(Type item, int pos) {
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::add(const Type& item, int pos) {
 	DoublyLinkedList<Type>::Node* temp = new DoublyLinkedList<Type>::Node;
 	temp->item = item;
+	if (is_empty()) {
+		first = last = temp;
+		size += 1;
+		return *this;
+	}
 	if (pos >= size) {
-		temp->prev = last;
 		last->next = temp;
+		temp->prev = last;
 		last = temp;
 		size += 1;
-		return;
+		return *this;
 	}
 	if (pos <= 0) {
-		temp->next = first;
 		first->prev = temp;
+		temp->next = first;
 		first = temp;
 		size += 1;
-		return;
+		return *this;
 	}
-	temp->next = &findElement(pos);
-	temp->prev = &findElement(pos - 1);
-	(temp->next)->prev = temp;
-	(temp->prev)->next = temp;
+	if (0 < pos < size) {
+		temp->next = &findElement(pos);
+		temp->prev = &findElement(pos - 1);
+		temp->next->prev = temp;
+		temp->prev->next = temp;
+		size += 1;
+		return *this;
+	}
 	size += 1;
+	return *this;
+}
+
+template <typename Type>
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::add(const Type item[], int number, int pos) {
+	for (int i = 0; i < number; i++, pos++)
+	{
+		add(item[i], pos);
+	}
+	return *this;
+}
+template <typename Type>
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::add(const DoublyLinkedList<Type>& obj, int pos) {
+	for (int i = 0; i < obj.size; i++, pos++)
+	{
+		add(obj[i], pos);
+	}
+	return *this;
+}
+
+template<typename Type>
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::add(const DoublyLinkedList<Type>& obj) {
+	return add(obj, size);
 }
 
 template <typename Type>
@@ -230,16 +284,51 @@ Type& DoublyLinkedList<Type>::operator[](int i) {
 	return findElement(i).item;
 }
 
+template<typename Type>
+Type DoublyLinkedList<Type>::operator[](int i) const {
+	if (i < 0 || i >= size)
+		throw exception("List index out of bounds");
+	return findElement(i).item;
+}
+
+template<typename Type>
+const DoublyLinkedList<Type>& DoublyLinkedList<Type>::operator=(const DoublyLinkedList<Type>& obj) {
+
+	if (!is_empty())
+		this->~DoublyLinkedList();
+
+	first = last = nullptr;
+
+	add(obj);
+
+	return obj;
+}
+template <typename Type>
+bool DoublyLinkedList<Type>::operator==(const DoublyLinkedList<Type>& obj) {
+	if (this->size != obj.size)
+		return false;
+	for (int i = 0; i < size; i++) {
+		if ((*this)[i] != obj[i])
+			return false;
+	}
+	return true;
+}
+
+template <typename Type>
+bool DoublyLinkedList<Type>::operator!=(const DoublyLinkedList<Type>& obj) {
+	if (this->size != obj.size)
+		return true;
+	for (int i = 0; i < size; i++) {
+		if ((*this)[i] != obj[i])
+			return true;
+	}
+	return false;
+}
+
 int main() {
 	DoublyLinkedList<int> a;
-	a.push_back(1);
-	a.push_back(2);
-	a.push_back(3);
-	a.push_back(4);
-	a.push_back(5);
-	a.print();
-	a.erase(2);
-	a.print();
-	a.print_back();
-	return 0;
+	int arr[5] = { 2,3,4,5,6 };
+	a.add(arr, 5, 1);
+	DoublyLinkedList<int> b(a);
+	b != a ? cout << "Yes" : cout << "No";
 }
