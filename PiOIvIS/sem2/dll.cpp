@@ -35,7 +35,10 @@ public:
 	DoublyLinkedList<Type>& add(const Type[], int, int);
 	DoublyLinkedList<Type>& add(const DoublyLinkedList<Type>&, int);
 	DoublyLinkedList<Type>& add(const DoublyLinkedList<Type>&);
-	void erase(int);
+	DoublyLinkedList<Type>& erase(int);
+	DoublyLinkedList<Type>& combining(const DoublyLinkedList<Type>&);
+	DoublyLinkedList<Type>& sort();
+	DoublyLinkedList<Type>& sort_r();
 
 	int Size();
 	int findElement_beg(Type);
@@ -47,9 +50,10 @@ public:
 
 	Type& operator[](int);
 	Type operator[](int) const;
+	DoublyLinkedList<Type> operator+(const DoublyLinkedList<Type>&) const;
 	const DoublyLinkedList<Type>& operator=(const DoublyLinkedList<Type>&);
-	bool operator==(const DoublyLinkedList<Type>&);
-	bool operator!=(const DoublyLinkedList<Type>&);
+	const bool operator==(const DoublyLinkedList<Type>&);
+	const bool operator!=(const DoublyLinkedList<Type>&);
 
 };
 
@@ -221,33 +225,75 @@ int DoublyLinkedList<Type>::findElement_end(Type item) {
 }
 
 template <typename Type>
-void DoublyLinkedList<Type>::erase(int pos) {
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::erase(int pos) {
 	DoublyLinkedList<Type>::Node* temp = &findElement(pos);
+	if (is_empty())
+		return *this;
 	if (size == 1) {
 		first = nullptr;
 		last = nullptr;
 		delete temp;
 		size = 0;
-		return;
+		return *this;
 	}
 	if (pos <= 0) {
 		(temp->next)->prev = nullptr;
 		first = temp->next;
 		size -= 1;
 		delete temp;
-		return;
+		return *this;
 	}
 	if (pos >= size - 1) {
 		(temp->prev)->next = nullptr;
 		last = temp->prev;
 		size -= 1;
 		delete temp;
-		return;
+		return *this;
 	}
 	(temp->prev)->next = temp->next;
 	(temp->next)->prev = temp->prev;
 	size -= 1;
 	delete temp;
+	return *this;
+}
+
+template <typename Type>
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::combining(const DoublyLinkedList<Type>& obj) {
+	for (int i = 0; i < obj.size; i++) {
+		if (this->findElement_beg(obj[i]) == -1)
+			this->add(obj[i]);
+	}
+	return *this;
+}
+
+template <typename Type>
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::sort() {
+	Type temp;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size - i - 1; j++) {
+			if ((*this)[j] > (*this)[j + 1]) {
+				temp = (*this)[j];
+				(*this)[j] = (*this)[j + 1];
+				(*this)[j + 1] = temp;
+			}
+		}
+	}
+	return *this;
+}
+
+template <typename Type>
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::sort_r() {
+	Type temp;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size - i - 1; j++) {
+			if ((*this)[j] < (*this)[j + 1]) {
+				temp = (*this)[j];
+				(*this)[j] = (*this)[j + 1];
+				(*this)[j + 1] = temp;
+			}
+		}
+	}
+	return *this;
 }
 
 template <typename Type>
@@ -292,6 +338,13 @@ Type DoublyLinkedList<Type>::operator[](int i) const {
 }
 
 template<typename Type>
+DoublyLinkedList<Type> DoublyLinkedList<Type>::operator+(const DoublyLinkedList<Type>& obj) const {
+	DoublyLinkedList<Type> temp(*this);
+	temp.add(obj);
+	return temp;
+}
+
+template<typename Type>
 const DoublyLinkedList<Type>& DoublyLinkedList<Type>::operator=(const DoublyLinkedList<Type>& obj) {
 
 	if (!is_empty())
@@ -304,7 +357,7 @@ const DoublyLinkedList<Type>& DoublyLinkedList<Type>::operator=(const DoublyLink
 	return obj;
 }
 template <typename Type>
-bool DoublyLinkedList<Type>::operator==(const DoublyLinkedList<Type>& obj) {
+const bool DoublyLinkedList<Type>::operator==(const DoublyLinkedList<Type>& obj) {
 	if (this->size != obj.size)
 		return false;
 	for (int i = 0; i < size; i++) {
@@ -315,7 +368,7 @@ bool DoublyLinkedList<Type>::operator==(const DoublyLinkedList<Type>& obj) {
 }
 
 template <typename Type>
-bool DoublyLinkedList<Type>::operator!=(const DoublyLinkedList<Type>& obj) {
+const bool DoublyLinkedList<Type>::operator!=(const DoublyLinkedList<Type>& obj) {
 	if (this->size != obj.size)
 		return true;
 	for (int i = 0; i < size; i++) {
@@ -327,8 +380,15 @@ bool DoublyLinkedList<Type>::operator!=(const DoublyLinkedList<Type>& obj) {
 
 int main() {
 	DoublyLinkedList<int> a;
-	int arr[5] = { 2,3,4,5,6 };
+	DoublyLinkedList<int> b;
+	DoublyLinkedList<int> c;
+	int arr[5] = { 3,5,4,2,6 };
 	a.add(arr, 5, 1);
-	DoublyLinkedList<int> b(a);
-	b != a ? cout << "Yes" : cout << "No";
+	b.push_back(4);
+	b.push_front(10);
+	c.push_back(1000);
+	c.push_front(10000);
+	c.add(a.sort_r());
+	c.print();
+	return 0;
 }
