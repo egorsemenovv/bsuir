@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//last commit: 28.01.23
+
 template <typename Type>
 
 class DoublyLinkedList {
@@ -37,6 +39,7 @@ public:
 	DoublyLinkedList<Type>& add(const DoublyLinkedList<Type>&);
 	DoublyLinkedList<Type>& erase(int);
 	DoublyLinkedList<Type>& combining(const DoublyLinkedList<Type>&);
+	DoublyLinkedList<Type>& intersection(const DoublyLinkedList<Type>&);
 	DoublyLinkedList<Type>& sort();
 	DoublyLinkedList<Type>& sort_r();
 
@@ -267,6 +270,24 @@ DoublyLinkedList<Type>& DoublyLinkedList<Type>::combining(const DoublyLinkedList
 }
 
 template <typename Type>
+DoublyLinkedList<Type>& DoublyLinkedList<Type>::intersection(const DoublyLinkedList<Type>& obj) {
+	DoublyLinkedList<Type> temp;
+	bool flag = false;
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < obj.size; j++) {
+			if ((*this)[i] == obj[j])
+				flag = true;
+		}
+		if (flag)
+			temp.push_back((*this)[i]);
+		flag = false;
+	}
+	*this = temp;
+	temp.~DoublyLinkedList<Type>();
+	return *this;
+}
+
+template <typename Type>
 DoublyLinkedList<Type>& DoublyLinkedList<Type>::sort() {
 	Type temp;
 	for (int i = 0; i < size; i++) {
@@ -378,17 +399,15 @@ const bool DoublyLinkedList<Type>::operator!=(const DoublyLinkedList<Type>& obj)
 	return false;
 }
 
+//TODO: add intersection;
+
 int main() {
-	DoublyLinkedList<int> a;
-	DoublyLinkedList<int> b;
-	DoublyLinkedList<int> c;
-	int arr[5] = { 3,5,4,2,6 };
-	a.add(arr, 5, 1);
-	b.push_back(4);
-	b.push_front(10);
-	c.push_back(1000);
-	c.push_front(10000);
-	c.add(a.sort_r());
-	c.print();
+	DoublyLinkedList<int> a, b;
+	int arr1[5] = { 1,2,3,4,5 };
+	int arr2[7] = { 5, 6, 2, 1, 10, 12, 13 };
+	a.add(arr1, 5, 0);
+	b.add(arr2, 7, 0);
+	a.intersection(b);
+	a.print();
 	return 0;
 }
