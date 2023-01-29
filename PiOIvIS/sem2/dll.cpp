@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-//last commit: 28.01.23
-
 template <typename Type>
 
 class DoublyLinkedList {
