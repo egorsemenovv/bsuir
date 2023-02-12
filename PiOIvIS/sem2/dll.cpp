@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 template <typename Type>
 
 class DoublyLinkedList {
@@ -44,10 +41,6 @@ public:
 	int Size();
 	int findElement_beg(Type);
 	int findElement_end(Type);
-
-	void print();
-	void print_back();
-
 
 	Type& operator[](int);
 	Type operator[](int) const;
@@ -320,39 +313,13 @@ int DoublyLinkedList<Type>::Size() {
 	return size;
 }
 
-template <typename Type>
-void DoublyLinkedList<Type>::print() {
-	DoublyLinkedList<Type>::Node* temp = first;
-	if (is_empty()) return;
-	while (temp) {
-		cout << temp->item << ' ';
-		temp = temp->next;
-	}
-	cout << endl;
-}
-
-template <typename Type>
-void DoublyLinkedList<Type>::print_back() {
-	DoublyLinkedList<Type>::Node* temp = last;
-	if (is_empty()) return;
-	while (temp) {
-		cout << temp->item << ' ';
-		temp = temp->prev;
-	}
-	cout << endl;
-}
-
 template<typename Type>
 Type& DoublyLinkedList<Type>::operator[](int i) {
-	if (i < 0 || i >= size)
-		throw exception("List index out of bounds");
 	return findElement(i).item;
 }
 
 template<typename Type>
 Type DoublyLinkedList<Type>::operator[](int i) const {
-	if (i < 0 || i >= size)
-		throw exception("List index out of bounds");
 	return findElement(i).item;
 }
 
@@ -395,15 +362,4 @@ const bool DoublyLinkedList<Type>::operator!=(const DoublyLinkedList<Type>& obj)
 			return true;
 	}
 	return false;
-}
-
-int main() {
-	DoublyLinkedList<int> a, b;
-	int arr1[5] = { 1,2,3,4,5 };
-	int arr2[7] = { 5, 6, 2, 1, 10, 12, 13 };
-	a.add(arr1, 5, 0);
-	b.add(arr2, 7, 0);
-	a.intersection(b);
-	a.print();
-	return 0;
 }
