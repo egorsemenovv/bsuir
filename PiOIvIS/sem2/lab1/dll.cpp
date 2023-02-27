@@ -83,6 +83,7 @@ DoublyLinkedList<Type>::~DoublyLinkedList() {
 		delete temp1;
 	}
 	first = last = nullptr;
+	size = 0;
 }
 
 template <typename Type>
@@ -244,6 +245,7 @@ DoublyLinkedList<Type>& DoublyLinkedList<Type>::erase(int pos) {
 		delete temp;
 		return *this;
 	}
+
 	(temp->prev)->next = temp->next;
 	(temp->next)->prev = temp->prev;
 	size -= 1;
@@ -263,18 +265,11 @@ DoublyLinkedList<Type>& DoublyLinkedList<Type>::combining(const DoublyLinkedList
 template <typename Type>
 DoublyLinkedList<Type>& DoublyLinkedList<Type>::intersection(const DoublyLinkedList<Type>& obj) {
 	DoublyLinkedList<Type> temp;
-	bool flag = false;
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < obj.size; j++) {
-			if ((*this)[i] == obj[j])
-				flag = true;
-		}
-		if (flag)
-			temp.push_back((*this)[i]);
-		flag = false;
+	for (int i = 0; i < obj.size; i++) {
+		if (findElement_beg(obj[i]) != -1)
+			temp.push_back(obj[i]);
 	}
 	*this = temp;
-	temp.~DoublyLinkedList<Type>();
 	return *this;
 }
 
@@ -332,16 +327,14 @@ DoublyLinkedList<Type> DoublyLinkedList<Type>::operator+(const DoublyLinkedList<
 
 template<typename Type>
 const DoublyLinkedList<Type>& DoublyLinkedList<Type>::operator=(const DoublyLinkedList<Type>& obj) {
-
 	if (!is_empty())
 		this->~DoublyLinkedList();
 
-	first = last = nullptr;
-
 	add(obj);
 
-	return obj;
+	return *this;
 }
+
 template <typename Type>
 const bool DoublyLinkedList<Type>::operator==(const DoublyLinkedList<Type>& obj) {
 	if (this->size != obj.size)
