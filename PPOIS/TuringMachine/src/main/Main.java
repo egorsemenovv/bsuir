@@ -74,34 +74,6 @@ public class Main {
     }
 }
 
-
-
-/*turingMachine.addRuleToRuleSet("q01->q01R");
-        turingMachine.addRuleToRuleSet("q0x->q1xR");
-        turingMachine.addRuleToRuleSet("q0*->q0*R");
-        turingMachine.addRuleToRuleSet("q11->q2aR");
-        turingMachine.addRuleToRuleSet("q21->q21L");
-        turingMachine.addRuleToRuleSet("q2x->q3xL");
-        turingMachine.addRuleToRuleSet("q2=->q2=L");
-        turingMachine.addRuleToRuleSet("q2a->q2aL");
-        turingMachine.addRuleToRuleSet("q31->q4aR");
-        turingMachine.addRuleToRuleSet("q3a->q3aL");
-        turingMachine.addRuleToRuleSet("q3*->q6*R");
-        turingMachine.addRuleToRuleSet("q41->q41R");
-        turingMachine.addRuleToRuleSet("q4x->q4xR");
-        turingMachine.addRuleToRuleSet("q4=->q4=R");
-        turingMachine.addRuleToRuleSet("q4a->q4aR");
-        turingMachine.addRuleToRuleSet("q4*->q51R");
-        turingMachine.addRuleToRuleSet("q5 ->q2*L");
-        turingMachine.addRuleToRuleSet("q6x->q7xR");
-        turingMachine.addRuleToRuleSet("q6a->q61R");
-        turingMachine.addRuleToRuleSet("q71->q2aR");
-        turingMachine.addRuleToRuleSet("q7=->q8=L");
-        turingMachine.addRuleToRuleSet("q7a->q7aR");
-        turingMachine.addRuleToRuleSet("q8x->q9xN");
-        turingMachine.addRuleToRuleSet("q8a->q81L");
-*/
-
 /* swap 0 and 1
 q00->q01R
 q01->q00R
