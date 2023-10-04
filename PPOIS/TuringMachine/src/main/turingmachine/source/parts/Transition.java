@@ -1,11 +1,12 @@
-package mt.source.parts;
+package turingmachine.source.parts;
 
 public class Transition {
+
     private int transitionalState;
     private char writeableSymbol;
     private char shift;
-    //Rule: q0'symbol'->q1'symbol''shift'
-    Transition(String inputRule){
+
+    public Transition(String inputRule){
         writeableSymbol = inputRule.charAt(2);
         shift = inputRule.charAt(3);
         transitionalState = Integer.parseInt(Character.toString(inputRule.charAt(1)));

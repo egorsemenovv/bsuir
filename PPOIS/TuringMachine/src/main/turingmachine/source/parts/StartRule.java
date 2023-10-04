@@ -1,10 +1,11 @@
-package mt.source.parts;
+package turingmachine.source.parts;
 
 import java.util.Objects;
 
 public class StartRule {
-    int currentState;
-    char inputSymbol;
+
+    public int currentState;
+    public char inputSymbol;
 
     StartRule(String inputRule) {
         this.currentState = Integer.parseInt(Character.toString(inputRule.charAt(1)));
@@ -28,7 +29,6 @@ public class StartRule {
     public int hashCode() {
         return Objects.hash(currentState, inputSymbol);
     }
-    //Rule: q0'symbol'->q1'symbol''shift'
 
     @Override
     public String toString() {
