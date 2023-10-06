@@ -1,9 +1,27 @@
+package turingmachine;
+
 import turingmachine.source.TuringMachine;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
+
+        // java /.../ turingmachine.Main filePath/... -log
+        StringBuilder path = new StringBuilder();
+        StringBuilder log = new StringBuilder();
+        switch (args.length){
+            case 0 -> System.out.println("...");
+            case 1 -> {path.append(args[0]);}
+            default -> {
+                path.append(args[0]);
+                log.append(args[1]);
+            }
+        }
+
+        System.out.println(path);
+        System.out.println(log);
+
         int x;
         boolean continueWork = true;
 
@@ -11,6 +29,7 @@ public class Main {
 
         TuringMachine turingMachine = new TuringMachine();
         turingMachine.showTape();
+
 
         while (continueWork) {
             System.out.print("1 - add a rule\n");
@@ -56,22 +75,20 @@ public class Main {
                     clear();
                     turingMachine.startWork();
                 }
-                case 9 -> {
-                    continueWork = false;
-                }
+                case 9 -> continueWork = false;
                 default -> {
                     clear();
                     System.out.println("Try again");
                 }
             }
         }
-
     }
 
     public static void clear(){
         System.out.print("\033[H\033[2J"); // to clear bash terminal
         System.out.flush();
     }
+
 }
 
 /* swap 0 and 1

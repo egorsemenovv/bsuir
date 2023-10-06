@@ -7,11 +7,20 @@ public class StartRule {
     public int currentState;
     public char inputSymbol;
 
+    /**
+     * Constructor to create objects by incoming rule
+     * @param inputRule string rule
+     */
     StartRule(String inputRule) {
         this.currentState = Integer.parseInt(Character.toString(inputRule.charAt(1)));
         this.inputSymbol = inputRule.charAt(2);
     }
 
+    /**
+     *
+     * @param currentState current state of carriage
+     * @param inputSymbol symbol on which tapes points
+     */
     StartRule(int currentState, char inputSymbol) {
         this.currentState = currentState;
         this.inputSymbol = inputSymbol;
