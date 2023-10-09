@@ -38,7 +38,6 @@ public class Alphabet {
      *
      * @return alphabet string
      */
-
     public static String getAlphabet() {
         return alphabet;
     }
@@ -46,12 +45,6 @@ public class Alphabet {
     /**
      *
      * @param alphabet sets alphabet for Turing Machine
-     */
-
-
-    /**
-     *
-     * @param alphabet string to set alphabet
      */
     public static void setAlphabet(String alphabet){
         Alphabet.alphabet = alphabet;
