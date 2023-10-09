@@ -1,7 +1,5 @@
 package turingmachine.source.parts;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Carriage {
 
     private int currentIndex = 0;
@@ -39,6 +37,18 @@ public class Carriage {
         this.finalState = finalState;
     }
 
+    public void setCurrentState(int currentState) {
+        this.currentState = currentState;
+    }
+
+    /**
+     *
+     * @return current state of carriage
+     */
+    public int getCurrentState() {
+        return currentState;
+    }
+
     /**
      *
      * @param tape tape from Turing Machine
@@ -61,7 +71,6 @@ public class Carriage {
                 tape.addLeft();
                 currentIndex++;
             }
-            System.out.println(tape.getTape());
         }else {
             System.out.println("Here is no rule for q"+currentStateTemp+" and '"+inputSymbol+"'");
             currentState=finalState;

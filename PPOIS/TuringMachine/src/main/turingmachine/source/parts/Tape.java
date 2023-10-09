@@ -1,5 +1,8 @@
 package turingmachine.source.parts;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Tape {
 
     private StringBuilder tape = new StringBuilder();
@@ -11,6 +14,8 @@ public class Tape {
     public void setTape(String tape) {;
         this.tape = new StringBuilder(tape);
     }
+
+
 
     /**
      *

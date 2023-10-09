@@ -1,11 +1,16 @@
 package turingmachine.source.parts;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class AlphabetTest {
+
+    @BeforeAll
+    public static void setUp(){
+        Alphabet.setAlphabet("0123456789");
+    }
 
     @Test
     void getBlankSymbol() {
@@ -16,5 +21,22 @@ class AlphabetTest {
     void setBlankSymbol() {
         Alphabet.setBlankSymbol(' ');
         Assertions.assertEquals(' ' , Alphabet.getBlankSymbol());
+    }
+
+    @Test
+    void isNormalTape(){
+        Assertions.assertTrue(Alphabet.isNormalTape("10101"));
+        Assertions.assertFalse(Alphabet.isNormalTape("abcde"));
+    }
+
+    @Test
+    void getAlphabet(){
+        Assertions.assertEquals("10101", Alphabet.getAlphabet());
+    }
+
+    @Test
+    void setAlphabet(){
+        Alphabet.setAlphabet("10101");
+        Assertions.assertEquals("10101", Alphabet.getAlphabet());
     }
 }

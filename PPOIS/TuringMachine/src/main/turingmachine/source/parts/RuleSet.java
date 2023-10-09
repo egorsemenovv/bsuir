@@ -1,13 +1,16 @@
 package turingmachine.source.parts;
 
-import java.util.HashMap;
+
+import java.util.LinkedHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RuleSet {
 
     /**
      * hash map to store rules for carriage
      */
-    private HashMap<StartRule, Transition> setOfRules = new HashMap<>();
+    private final LinkedHashMap<StartRule, Transition> setOfRules = new LinkedHashMap<>();
 
     /**
      *
@@ -55,8 +58,14 @@ public class RuleSet {
      * @return 1 if rule has been added and 0 if not
      */
     public int addRule(String inputRule) {
+        Pattern pattern = Pattern.compile("^q\\d+.->q\\d+.[RLN]$");
+        Matcher matcher = pattern.matcher(inputRule);
+        if (!matcher.matches()){
+            System.out.println("Incorrect rule, example: q'number''symbol'->q'number''symbol''shift'");
+            return 0;
+        }
         StartRule firstPartOfRule = new StartRule(inputRule.substring(0, inputRule.indexOf("-")));
-        Transition secondPartOfRule = new Transition(inputRule.substring(inputRule.indexOf(">") + 1, 9));
+        Transition secondPartOfRule = new Transition(inputRule.substring(inputRule.indexOf(">") + 1));
         if (setOfRules.containsKey(firstPartOfRule)) {
             System.out.println("Rule with such running state and input symbol is already exist");
             return 0;
@@ -73,8 +82,14 @@ public class RuleSet {
      * @return 1 if rule has been deleted and 0 if not
      */
     public int delRule(String inputRule) {
+        Pattern pattern = Pattern.compile("^q\\d+.->q\\d+.[RLN]$");
+        Matcher matcher = pattern.matcher(inputRule);
+        if (!matcher.matches()){
+            System.out.println("Incorrect rule, example: q'number''symbol'->q'number''symbol''shift'");
+            return 0;
+        }
         StartRule firstPartOfRule = new StartRule(inputRule.substring(0, inputRule.indexOf("-")));
-        Transition secondPartOfRule = new Transition(inputRule.substring(inputRule.indexOf(">") + 1, 9));
+        Transition secondPartOfRule = new Transition(inputRule.substring(inputRule.indexOf(">") + 1));
         if (setOfRules.containsKey(firstPartOfRule) && setOfRules.get(firstPartOfRule).equals(secondPartOfRule)) {
             System.out.println("Rule has been deleted");
             setOfRules.remove(firstPartOfRule);
@@ -85,9 +100,6 @@ public class RuleSet {
         return 1;
     }
 
-    /**
-     * show in console set of rules
-     */
     public void showRules() {
         for (StartRule name : setOfRules.keySet()) {
             String key = name.toString();

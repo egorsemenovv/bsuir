@@ -37,11 +37,13 @@ class RuleSetTest {
     public void addRule() {
         Assertions.assertEquals(1, ruleSet.addRule("q11->q20R"));
         Assertions.assertEquals(0, ruleSet.addRule("q11->q20R"));
+        Assertions.assertEquals(0, ruleSet.addRule("q1->qa0R"));
     }
 
     @Test
     void delRule() {
         Assertions.assertEquals(1, ruleSet.delRule("q11->q20R"));
         Assertions.assertEquals(0, ruleSet.delRule("q11->q20R"));
+        Assertions.assertEquals(0, ruleSet.delRule("q1->qa0R"));
     }
 }

@@ -1,33 +1,55 @@
 package turingmachine;
 
 import turingmachine.source.TuringMachine;
+import turingmachine.source.parts.Alphabet;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
-
-        // java /.../ turingmachine.Main filePath/... -log
-        StringBuilder path = new StringBuilder();
+    public static void main(String[] args) throws Exception{
+        TuringMachine turingMachine;
+        StringBuilder fileName = new StringBuilder();
         StringBuilder log = new StringBuilder();
-        switch (args.length){
-            case 0 -> System.out.println("...");
-            case 1 -> {path.append(args[0]);}
-            default -> {
-                path.append(args[0]);
-                log.append(args[1]);
-            }
-        }
-
-        System.out.println(path);
-        System.out.println(log);
-
         int x;
         boolean continueWork = true;
 
+        switch (args.length){
+            case 0 -> {
+                System.out.println("File path is required");
+                return;
+            }
+            case 1 -> fileName.append(args[0]);
+            default -> {
+                fileName.append(args[0]);
+                log.append(args[1]);
+            }
+        }
+        if(!Files.exists(Path.of(fileName.toString()))){
+            System.out.println("No such file");
+            return;
+        }
+
+        Path path = Path.of(fileName.toString());
+        List<String> list = Files.readAllLines(path);
+
+        if (log.toString().equals("-log"))
+            turingMachine = new TuringMachine(true);
+        else
+            turingMachine = new TuringMachine(false);
+
+
+        Alphabet.setAlphabet(list.get(0));
+        turingMachine.setTape(list.get(1));
+
+        for (int i = 2; i < list.size(); i++) {
+            turingMachine.addRuleToRuleSet(list.get(i));
+        }
+
         Scanner scanner = new Scanner(System.in);
 
-        TuringMachine turingMachine = new TuringMachine();
         turingMachine.showTape();
 
 
@@ -39,8 +61,11 @@ public class Main {
             System.out.print("5 - set tape\n");
             System.out.print("6 - edit tape\n");
             System.out.print("7 - set terminal state to carriage\n");
-            System.out.print("8 - start the machine\n");
-            System.out.print("9 - exit\n");
+            System.out.print("8 - set current state to carriage\n");
+            System.out.print("9 - set current index to carriage on tape\n");
+            System.out.print("10 - step implementation\n");
+            System.out.print("11 - start the machine\n");
+            System.out.print("12 - exit\n");
             x = scanner.nextInt();
             switch (x) {
                 case 1 -> {
@@ -61,7 +86,7 @@ public class Main {
                 }
                 case 5 -> {
                     clear();
-                    turingMachine.resetTape();
+                    turingMachine.setTape();
                 }
                 case 6 -> {
                     clear();
@@ -73,9 +98,21 @@ public class Main {
                 }
                 case 8 -> {
                     clear();
+                    turingMachine.setCurrentStateForCarriage();
+                }
+                case 9 -> {
+                    clear();
+                    turingMachine.setCurrentIndexForCarriage();
+                }
+                case 10 ->{
+                    clear();
+                    turingMachine.stepImplementation();
+                }
+                case 11 -> {
+                    clear();
                     turingMachine.startWork();
                 }
-                case 9 -> continueWork = false;
+                case 12 -> continueWork = false;
                 default -> {
                     clear();
                     System.out.println("Try again");
@@ -91,8 +128,3 @@ public class Main {
 
 }
 
-/* swap 0 and 1
-q00->q01R
-q01->q00R
-q0 ->q9 N
-*/

@@ -15,6 +15,7 @@ class CarriageTest {
     public static void setUp(){
         carriage.setCurrentIndex(0);
         carriage.setFinalState(1);
+        carriage.setCurrentState(1);
         tape.setTape("1");
         ruleSet.addRule("q01->q10R");
     }
@@ -54,6 +55,18 @@ class CarriageTest {
         temp.setCurrentIndex(0);
         temp.move(tape, ruleSet);
         Assertions.assertEquals("0", tape.getTape().toString());
+    }
+
+    @Test
+    void setCurrentState() {
+        Carriage temp = new Carriage();
+        temp.setCurrentState(10);
+        Assertions.assertEquals(10 , temp.getCurrentState());
+    }
+
+    @Test
+    void getCurrentState() {
+        Assertions.assertEquals(1, carriage.getCurrentState());
     }
 
     @Test

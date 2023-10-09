@@ -12,8 +12,8 @@ public class StartRule {
      * @param inputRule string rule
      */
     StartRule(String inputRule) {
-        this.currentState = Integer.parseInt(Character.toString(inputRule.charAt(1)));
-        this.inputSymbol = inputRule.charAt(2);
+        this.currentState = Integer.parseInt((inputRule.substring(1, inputRule.length()-1)));
+        this.inputSymbol = inputRule.charAt(inputRule.length()-1);
     }
 
     /**

@@ -12,9 +12,9 @@ public class Transition {
      * @param inputRule rule to set transition
      */
     public Transition(String inputRule){
-        writeableSymbol = inputRule.charAt(2);
-        shift = inputRule.charAt(3);
-        transitionalState = Integer.parseInt(Character.toString(inputRule.charAt(1)));
+        writeableSymbol = inputRule.charAt(inputRule.length()-2);
+        shift = inputRule.charAt(inputRule.length()-1);
+        transitionalState = Integer.parseInt((inputRule.substring(1, inputRule.length()-2)));
     }
 
     /**
