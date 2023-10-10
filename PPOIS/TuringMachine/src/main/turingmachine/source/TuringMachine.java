@@ -91,7 +91,7 @@ public class TuringMachine {
             System.out.println("Invalid index");
             return;
         }
-        carriage.setCurrentIndex(x);
+        carriage.setCurrentIndex(x-1);
     }
 
     public void setCurrentStateForCarriage(){

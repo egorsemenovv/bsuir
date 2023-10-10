@@ -1,4 +1,4 @@
-AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!@"#№;$%^:?&*()-_+=.,/\|
+AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789 !@"#№;$%^:?&*()-_+=.,/\|
 *111x11=*
 q01->q01R
 q0x->q1xR
@@ -22,5 +22,5 @@ q6a->q61R
 q71->q2aR
 q7=->q8=L
 q7a->q7aR
-q8x->q9xN
+q8x->q9xR
 q8a->q81L
