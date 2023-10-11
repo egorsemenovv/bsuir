@@ -54,7 +54,7 @@ public class TuringMachine {
             System.out.print(' ');
         }
         System.out.println('^');
-        System.out.println();
+        System.out.println("Current state: q"+carriage.getCurrentState()+" Final state: q"+carriage.getFinalState());
     }
 
     public void addRuleToRuleSet() {
@@ -121,10 +121,6 @@ public class TuringMachine {
     }
 
     public void startWork() {
-        if (tape.getTape().toString().isEmpty()) {
-            System.out.println("Your tape is empty");
-            return;
-        }
         if (carriage.getFinalState() == 0) {
             System.out.println("Inappropriate terminal state");
             return;

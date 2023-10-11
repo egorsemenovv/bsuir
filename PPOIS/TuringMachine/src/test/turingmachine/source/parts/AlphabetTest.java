@@ -18,12 +18,6 @@ class AlphabetTest {
     }
 
     @Test
-    void setBlankSymbol() {
-        Alphabet.setBlankSymbol(' ');
-        Assertions.assertEquals(' ' , Alphabet.getBlankSymbol());
-    }
-
-    @Test
     void isNormalTape(){
         Assertions.assertTrue(Alphabet.isNormalTape("10101"));
         Assertions.assertFalse(Alphabet.isNormalTape("abcde"));

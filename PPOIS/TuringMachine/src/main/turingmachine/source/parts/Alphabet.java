@@ -17,15 +17,7 @@ public class Alphabet {
     }
 
     /**
-     * @param nullSymbol symbol to set new blank symbol for alphabet
-     */
-    public static void setBlankSymbol(char nullSymbol) {
-        Alphabet.blankSymbol = nullSymbol;
-    }
-
-    /**
-     * checks if tape consists of alphabet
-     *
+     * checks if tape consists of alphabet symbols
      * @return true if yes, false if no
      */
     public static boolean isNormalTape(String inputTape) {
