@@ -9,16 +9,16 @@ public class Transition {
 
     /**
      * Constructor
+     *
      * @param inputRule rule to set transition
      */
-    public Transition(String inputRule){
-        writeableSymbol = inputRule.charAt(inputRule.length()-2);
-        shift = inputRule.charAt(inputRule.length()-1);
-        transitionalState = Integer.parseInt((inputRule.substring(1, inputRule.length()-2)));
+    public Transition(String inputRule) {
+        writeableSymbol = inputRule.charAt(inputRule.length() - 2);
+        shift = inputRule.charAt(inputRule.length() - 1);
+        transitionalState = Integer.parseInt((inputRule.substring(1, inputRule.length() - 2)));
     }
 
     /**
-     *
      * @return transitional state from rule
      */
     public int getTransitionalState() {
@@ -26,7 +26,6 @@ public class Transition {
     }
 
     /**
-     *
      * @return symbol to rewrite on tape from rule
      */
     public char getWriteableSymbol() {
@@ -34,7 +33,6 @@ public class Transition {
     }
 
     /**
-     *
      * @return shift from rule to carriage
      */
     public char getShift() {
@@ -52,6 +50,6 @@ public class Transition {
 
     @Override
     public String toString() {
-        return "q" + transitionalState+writeableSymbol+shift;
+        return "q" + transitionalState + writeableSymbol + shift;
     }
 }

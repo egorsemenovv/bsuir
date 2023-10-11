@@ -22,7 +22,6 @@ public class Carriage {
     }
 
     /**
-     *
      * @param currentIndex current index of carriage on tape
      */
     public void setCurrentIndex(int currentIndex) {
@@ -30,7 +29,6 @@ public class Carriage {
     }
 
     /**
-     *
      * @param finalState sets terminal state to carriage
      */
     public void setFinalState(int finalState) {
@@ -42,7 +40,6 @@ public class Carriage {
     }
 
     /**
-     *
      * @return current state of carriage
      */
     public int getCurrentState() {
@@ -50,8 +47,7 @@ public class Carriage {
     }
 
     /**
-     *
-     * @param tape tape from Turing Machine
+     * @param tape    tape from Turing Machine
      * @param ruleSet set of rules for carriage operation
      */
     public void move(Tape tape, RuleSet ruleSet) {
@@ -71,14 +67,13 @@ public class Carriage {
                 tape.addLeft();
                 currentIndex++;
             }
-        }else {
-            System.out.println("Here is no rule for q"+currentStateTemp+" and '"+inputSymbol+"'");
-            currentState=finalState;
+        } else {
+            System.out.println("Here is no rule for q" + currentStateTemp + " and '" + inputSymbol + "'");
+            currentState = finalState;
         }
     }
 
     /**
-     *
      * @return checking if carriage state is final
      */
     public boolean isOnFinalState() {

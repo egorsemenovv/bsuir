@@ -10,7 +10,6 @@ public class Alphabet {
     private static char blankSymbol = ' ';
 
     /**
-     *
      * @return blank symbol from alphabet
      */
     public static char getBlankSymbol() {
@@ -18,14 +17,15 @@ public class Alphabet {
     }
 
     /**
-     *
      * @param nullSymbol symbol to set new blank symbol for alphabet
      */
-    public static void setBlankSymbol(char nullSymbol){
-        Alphabet.blankSymbol = nullSymbol;}
+    public static void setBlankSymbol(char nullSymbol) {
+        Alphabet.blankSymbol = nullSymbol;
+    }
 
     /**
      * checks if tape consists of alphabet
+     *
      * @return true if yes, false if no
      */
     public static boolean isNormalTape(String inputTape) {
@@ -35,7 +35,6 @@ public class Alphabet {
     }
 
     /**
-     *
      * @return alphabet string
      */
     public static String getAlphabet() {
@@ -43,10 +42,9 @@ public class Alphabet {
     }
 
     /**
-     *
      * @param alphabet sets alphabet for Turing Machine
      */
-    public static void setAlphabet(String alphabet){
+    public static void setAlphabet(String alphabet) {
         Alphabet.alphabet = alphabet;
     }
 

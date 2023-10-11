@@ -1,24 +1,18 @@
 package turingmachine.source.parts;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Tape {
 
     private StringBuilder tape = new StringBuilder();
 
     /**
-     *
      * @param tape string to set tape
      */
-    public void setTape(String tape) {;
+    public void setTape(String tape) {
         this.tape = new StringBuilder(tape);
     }
 
 
-
     /**
-     *
      * @return length of tape
      */
     public int getLength() {
@@ -26,7 +20,6 @@ public class Tape {
     }
 
     /**
-     *
      * @return tape
      */
     public StringBuilder getTape() {
@@ -35,6 +28,7 @@ public class Tape {
 
     /**
      * add a null symbol to the left side of tape
+     *
      * @return null symbol from alphabet
      */
     public char addLeft() {
@@ -44,6 +38,7 @@ public class Tape {
 
     /**
      * add a null symbol to the right side of tape
+     *
      * @return null symbol from alphabet
      */
     public char addRight() {
@@ -52,7 +47,6 @@ public class Tape {
     }
 
     /**
-     *
      * @param currentIndex current index of carriage on tape
      * @return symbol on which carriage points
      */
@@ -62,7 +56,8 @@ public class Tape {
 
     /**
      * rewrites symbols on tape
-     * @param currentIndex current index of carriage on tape
+     *
+     * @param currentIndex    current index of carriage on tape
      * @param writeableSymbol symbol from transition rule to rewrite on tape
      */
     public void replaceSymbol(int currentIndex, char writeableSymbol) {

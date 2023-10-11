@@ -13,19 +13,17 @@ public class RuleSet {
     private final LinkedHashMap<StartRule, Transition> setOfRules = new LinkedHashMap<>();
 
     /**
-     *
      * @param currentState current state of carriage
-     * @param inputSymbol symbol on which carriage points
+     * @param inputSymbol  symbol on which carriage points
      * @return checking if rule with such parameters exists
      */
-    public boolean isRuleExist(int currentState , char inputSymbol){
+    public boolean isRuleExist(int currentState, char inputSymbol) {
         return setOfRules.containsKey(new StartRule(currentState, inputSymbol));
     }
 
     /**
-     *
      * @param currentState current state of carriage
-     * @param inputSymbol symbol on which carriage points
+     * @param inputSymbol  symbol on which carriage points
      * @return symbol from transition rule to rewrite on tape
      */
     public char getWriteableSymbolOfRule(int currentState, char inputSymbol) {
@@ -33,9 +31,8 @@ public class RuleSet {
     }
 
     /**
-     *
      * @param currentState current state of carriage
-     * @param inputSymbol symbol on which carriage points
+     * @param inputSymbol  symbol on which carriage points
      * @return shift-symbol from transition rule to rewrite on tape
      */
     public char getShiftOfRule(int currentState, char inputSymbol) {
@@ -43,9 +40,8 @@ public class RuleSet {
     }
 
     /**
-     *
      * @param currentState current state of carriage
-     * @param inputSymbol symbol on which carriage points
+     * @param inputSymbol  symbol on which carriage points
      * @return transitional state of rule to set for carriage
      */
     public int getTransitionalStateOfRule(int currentState, char inputSymbol) {
@@ -54,13 +50,14 @@ public class RuleSet {
 
     /**
      * adding rules to set of rules
+     *
      * @param inputRule rule to add for set of rules
      * @return 1 if rule has been added and 0 if not
      */
     public int addRule(String inputRule) {
         Pattern pattern = Pattern.compile("^q\\d+.->q\\d+.[RLN]$");
         Matcher matcher = pattern.matcher(inputRule);
-        if (!matcher.matches()){
+        if (!matcher.matches()) {
             System.out.println("Incorrect rule, example: q'number''symbol'->q'number''symbol''shift'");
             return 0;
         }
@@ -78,13 +75,14 @@ public class RuleSet {
 
     /**
      * deleting rule from rule set
+     *
      * @param inputRule rule to delete from set of rules
      * @return 1 if rule has been deleted and 0 if not
      */
     public int delRule(String inputRule) {
         Pattern pattern = Pattern.compile("^q\\d+.->q\\d+.[RLN]$");
         Matcher matcher = pattern.matcher(inputRule);
-        if (!matcher.matches()){
+        if (!matcher.matches()) {
             System.out.println("Incorrect rule, example: q'number''symbol'->q'number''symbol''shift'");
             return 0;
         }

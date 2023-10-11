@@ -9,17 +9,17 @@ public class StartRule {
 
     /**
      * Constructor to create objects by incoming rule
+     *
      * @param inputRule string rule
      */
     StartRule(String inputRule) {
-        this.currentState = Integer.parseInt((inputRule.substring(1, inputRule.length()-1)));
-        this.inputSymbol = inputRule.charAt(inputRule.length()-1);
+        this.currentState = Integer.parseInt((inputRule.substring(1, inputRule.length() - 1)));
+        this.inputSymbol = inputRule.charAt(inputRule.length() - 1);
     }
 
     /**
-     *
      * @param currentState current state of carriage
-     * @param inputSymbol symbol on which tapes points
+     * @param inputSymbol  symbol on which tapes points
      */
     StartRule(int currentState, char inputSymbol) {
         this.currentState = currentState;
