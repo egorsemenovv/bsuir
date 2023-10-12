@@ -2,9 +2,9 @@ package turingmachine.source.parts;
 
 public class Transition {
 
-    private int transitionalState;
-    private char writeableSymbol;
-    private char shift;
+    private final int transitionalState;
+    private final char writeableSymbol;
+    private final char shift;
 
 
     /**
