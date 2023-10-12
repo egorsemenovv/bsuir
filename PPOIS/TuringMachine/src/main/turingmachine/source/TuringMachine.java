@@ -21,6 +21,9 @@ public class TuringMachine {
         this.tape.setTape(tape);
     }
 
+    /**
+     * sets tape to TuringMachine
+     */
     public void setTape() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter new tape: ");
@@ -33,6 +36,9 @@ public class TuringMachine {
         carriage.setCurrentIndex(0);
     }
 
+    /**
+     * to edit tape by index and symbol
+     */
     public void editTape() {
         System.out.print("Enter the symbol number and new symbol: ");
         Scanner scanner = new Scanner(System.in);
@@ -44,6 +50,9 @@ public class TuringMachine {
         tape.replaceSymbol(x, scanner.next().charAt(0));
     }
 
+    /**
+     * shows tape and states in console
+     */
     public void showTape() {
         System.out.print("Your tape: ");
         for (int i = 0; i < tape.getLength(); i++) {
@@ -57,33 +66,52 @@ public class TuringMachine {
         System.out.println("Current state: q"+carriage.getCurrentState()+" Final state: q"+carriage.getFinalState());
     }
 
+    /**
+     * to add rules in console
+     */
     public void addRuleToRuleSet() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type new rule: ");
         ruleSet.addRule(scanner.nextLine());
     }
 
+    /**
+     * to add rules from File
+     * @param rule string from File
+     */
     public void addRuleToRuleSet(String rule) {
         ruleSet.addRule(rule);
     }
 
+    /**
+     * to delete rule from set of rules
+     */
     public void delRuleFromRuleSet() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type rule to delete: ");
         ruleSet.delRule(scanner.next());
     }
 
+    /**
+     * shows rules in console
+     */
     public void showRulesFromRuleSet() {
         System.out.println("List of rules:");
         ruleSet.showRules();
     }
 
+    /**
+     * to set final set to carriage
+     */
     public void setFinalStateToCarriage() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type the number of final state: ");
         carriage.setFinalState(scanner.nextInt());
     }
 
+    /**
+     * to set current index to carriage
+     */
     public void setCurrentIndexForCarriage() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter index of carriage on tape: ");
@@ -95,12 +123,18 @@ public class TuringMachine {
         carriage.setCurrentIndex(x - 1);
     }
 
+    /**
+     * to set current state to carriage
+     */
     public void setCurrentStateForCarriage() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter number of state to carriage: ");
         carriage.setCurrentState(scanner.nextInt());
     }
 
+    /**
+     * makes one step
+     */
     public void stepImplementation() {
         if (tape.getTape().toString().isEmpty()) {
             System.out.println("Your tape is empty");
@@ -120,6 +154,9 @@ public class TuringMachine {
         }
     }
 
+    /**
+     * makes steps until current state not equal to final step
+     */
     public void startWork() {
         if (carriage.getFinalState() == 0) {
             System.out.println("Inappropriate terminal state");
