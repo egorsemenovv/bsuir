@@ -3,15 +3,15 @@ package org.example;
 import java.util.Scanner;
 
 public class Authentication {
-    public static Person person;
+    public Person person;
     private static final DataBaseManager db = new DataBaseManager();
 
-    public static boolean logIn() {
+    public boolean logIn() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username: ");
-        String username = scanner.nextLine();
+        String username = "First User"; // scanner.nextLine();
         System.out.println("Password: ");
-        String password = scanner.nextLine();
+        String password = "12345User!";//scanner.nextLine();
         if (!Password.isAppropriate(password)) {
             System.out.println("Wrong password");
             return false;
