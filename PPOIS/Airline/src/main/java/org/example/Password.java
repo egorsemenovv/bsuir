@@ -27,7 +27,4 @@ public final class Password {
         return Base64.getEncoder().encodeToString(hash);
     }
 
-    public static boolean checkPassword(String password, String encodedHash) throws NoSuchAlgorithmException {
-        return encode(password).equals(encodedHash);
-    }
 }

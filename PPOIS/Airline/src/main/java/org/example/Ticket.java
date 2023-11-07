@@ -15,18 +15,6 @@ public class Ticket {
         this.seatNo = seatNo;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public String getPassengerName() {
-        return passengerName;
-    }
-
     public long getFlightId() {
         return flightId;
     }

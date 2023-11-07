@@ -6,12 +6,12 @@ public class Authentication {
     public Person person;
     private static final DataBaseManager db = new DataBaseManager();
 
-    public boolean logIn() {
+    public boolean logIn(String username,String password) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username: ");
-        String username = "First User"; // scanner.nextLine();
+//        String username = "First User"; // scanner.nextLine();
         System.out.println("Password: ");
-        String password = "12345User!";//scanner.nextLine();
+//        String password = scanner.nextLine();
         if (!Password.isAppropriate(password)) {
             System.out.println("Wrong password");
             return false;
@@ -24,18 +24,18 @@ public class Authentication {
         return true;
     }
 
-    public static boolean signUp() {
+    public boolean signUp(String username,String password, String email) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username: ");
-        String username = scanner.nextLine();
+//        String username = scanner.nextLine();
         System.out.println("Password: ");
-        String password = scanner.nextLine();
+//        String password = scanner.nextLine();
         if (!Password.isAppropriate(password)) {
             System.out.println("Wrong password");
             return false;
         }
         System.out.println("Email: ");
-        String email = scanner.nextLine();
+//        String email = scanner.nextLine();
         return db.addUser(username, Password.encode(password), email);
     }
 }

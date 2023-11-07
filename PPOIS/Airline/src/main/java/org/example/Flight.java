@@ -27,10 +27,6 @@ public class Flight {
         return id;
     }
 
-    public String getFlightNo() {
-        return flightNo;
-    }
-
     public Date getDepartureDate() {
         return departureDate;
     }
@@ -53,34 +49,6 @@ public class Flight {
 
     public String getStatus() {
         return status;
-    }
-
-    public void setFlightNo(String flightNo) {
-        this.flightNo = flightNo;
-    }
-
-    public void setDepartureDate(java.sql.Timestamp departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public void setArrivalDate(java.sql.Timestamp arrivalDate) {
-        this.arrivalDate = arrivalDate;
-    }
-
-    public void setDepartureAirportCode(String departureAirportCode) {
-        this.departureAirportCode = departureAirportCode;
-    }
-
-    public void setArrivalAirportCode(String arrivalAirportCode) {
-        this.arrivalAirportCode = arrivalAirportCode;
-    }
-
-    public void setAircraftId(int aircraftId) {
-        this.aircraftId = aircraftId;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
 }

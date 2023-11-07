@@ -19,44 +19,11 @@ public abstract class Person {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setUserStatus(String userStatus) {
-        this.userStatus = userStatus;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public int getId() {
         return id;
     }
 
     public String getUsername() {
         return username;
-    }
-
-    public String getUserStatus() {
-        return userStatus;
-    }
-
-    public abstract void hello();
-
-    public abstract void startService();
-
-    @Override
-    public String toString() {
-        return Integer.toString(id) + " " + username + " " + email + " " + userStatus;
     }
 }

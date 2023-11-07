@@ -2,7 +2,6 @@ package org.example;
 
 import java.sql.*;
 import java.util.*;
-import java.util.Date;
 
 public class DataBaseManager {
     public static final String USERNAME_KEY = "db.username";
@@ -124,14 +123,14 @@ public class DataBaseManager {
         return flights;
     }
 
-    public boolean deleteFlight(int flightId) {
+    public boolean deleteFlightByFlightNo(String flightNo) {
         String sql = """
                 DELETE FROM flight
-                WHERE id = ?;
+                WHERE flight_no = ?;
                 """;
         try(var connection = DataBaseManager.open();
-        var preparedStatemnet = connection.prepareStatement(sql)){
-            preparedStatemnet.setInt(1, flightId);
+            var preparedStatemnet = connection.prepareStatement(sql)){
+            preparedStatemnet.setString(1, flightNo);
             int rowsUpdated = preparedStatemnet.executeUpdate();
             return rowsUpdated !=0;
         } catch (SQLException e) {
@@ -207,7 +206,7 @@ public class DataBaseManager {
         }
     }
 
-    public static String getCityFromAirportCode(String airportCode){
+    public  String getCityFromAirportCode(String airportCode){
         String sql = """
                 SELECT city
                 FROM airport
@@ -241,7 +240,7 @@ public class DataBaseManager {
         }
     }
 
-    public boolean deleteUSer(int userId){
+    public boolean deleteUser(int userId){
         String sql = """
                 DELETE FROM person
                 WHERE id = ?;
@@ -311,10 +310,10 @@ public class DataBaseManager {
     }
 
 
-        public boolean deleteTicket(int userId, String passengerName, long flightId, String seatNo, float cost){
+        public boolean deleteTicket(int userId, String passengerName, long flightId, String seatNo){
         String sql = """
-                INSERT INTO ticket(user_id, passenger_name, flight_id, seat_no, cost)
-                VALUES (?, ?, ?, ?, ?)
+                DELETE FROM ticket
+                WHERE user_id = ? AND passenger_name = ? AND flight_id = ? AND seat_no = ?;
                 """;
         try (var connection = DataBaseManager.open();
              var preparedStatement = connection.prepareStatement(sql)){
@@ -322,7 +321,6 @@ public class DataBaseManager {
             preparedStatement.setString(2, passengerName);
             preparedStatement.setLong(3, flightId);
             preparedStatement.setString(4, seatNo);
-            preparedStatement.setFloat(5, cost);
             int updatedRows = preparedStatement.executeUpdate();
             return updatedRows != 0;
         } catch (SQLException e) {
@@ -420,7 +418,7 @@ public class DataBaseManager {
                 FROM ticket
                 WHERE user_id = ?;
                 """;
-        List<Ticket> tickets= new ArrayList<>();
+        List<Ticket> tickets = new ArrayList<>();
         try(var connection = DataBaseManager.open();
         var preparedStatement = connection.prepareStatement(sql)){
             preparedStatement.setInt(1, userId);
@@ -432,10 +430,36 @@ public class DataBaseManager {
                         resultSet.getLong(4),
                         resultSet.getString(5)));
             }
+            if (tickets.isEmpty()){
+                return null;
+            }
             return tickets;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public Flight getFlightById(long id){
+        String sql = """
+                SELECT *
+                FROM flight
+                WHERE id = ?;
+                """;
+        try(var connection = DataBaseManager.open();
+        var preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            return new Flight(resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getTimestamp(3),
+                    resultSet.getTimestamp(5),
+                    resultSet.getString(4),
+                    resultSet.getString(6),
+                    resultSet.getInt(7),
+                    resultSet.getString(8));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
