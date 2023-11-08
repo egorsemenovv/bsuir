@@ -6,6 +6,12 @@ public class Authentication {
     public Person person;
     private static final DataBaseManager db = new DataBaseManager();
 
+    /**
+     * to log in into your account
+     * @param username person`s username
+     * @param password person`s password
+     * @return true if successful, false if not
+     */
     public boolean logIn(String username,String password) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username: ");
@@ -24,6 +30,13 @@ public class Authentication {
         return true;
     }
 
+    /**
+     * creates new user
+     * @param username person`s username
+     * @param password person`s password
+     * @param email person`s email
+     * @return true if successful, false if not
+     */
     public boolean signUp(String username,String password, String email) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Username: ");

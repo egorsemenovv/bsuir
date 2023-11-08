@@ -15,10 +15,16 @@ public class Ticket {
         this.seatNo = seatNo;
     }
 
+    /**
+     * @return id of a flight
+     */
     public long getFlightId() {
         return flightId;
     }
 
+    /**
+     * @return seat number of this ticket
+     */
     public String getSeatNo() {
         return seatNo;
     }

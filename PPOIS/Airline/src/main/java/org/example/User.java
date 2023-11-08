@@ -13,6 +13,10 @@ public class User extends Person {
         super(id, username, password, email, USER_STATUS);
     }
 
+    /**
+     * display flights on console
+     * @param flights list of flights that user searched
+     */
     private void showFlights(List<Flight> flights) {
 
         System.out.println("--------------------------------------------------------------------------------------------------------");
@@ -30,6 +34,14 @@ public class User extends Person {
         System.out.println("--------------------------------------------------------------------------------------------------------");
     }
 
+    /**
+     * buys ticket for a flight
+     * @param departureCity departure city
+     * @param arrivalCity arrival city
+     * @param flightNumber number of founded flights
+     * @param seat seat that user wants to buy
+     * @return true if successful, false if not
+     */
     public boolean buyTicket(String departureCity, String arrivalCity, int flightNumber, String seat) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input departure city: ");
@@ -65,6 +77,11 @@ public class User extends Person {
         return db.addTicket(getId(), getUsername(), flights.get(flightNumber - 1).getId(), seat);
     }
 
+    /**
+     * cancel ticket for a flight
+     * @param ticketNumber number of user`s tickets
+     * @return true if successful, false if not
+     */
     public boolean cancelTicket(int ticketNumber) {
         List<Ticket> tickets = db.getUserTickets(this.getId());
         if (tickets == null) {
@@ -82,7 +99,11 @@ public class User extends Person {
         return true;
     }
 
-    private void showUserTickets(List<Ticket> tickets) {
+    /**
+     * display user`s tickets on console
+     * @param tickets list of user`s tickets
+     */
+    public void showUserTickets(List<Ticket> tickets) {
         System.out.println("-----------------------------------------------------------------------------------------------------------------");
         System.out.format("%8s %16s %16s %30s %30s %8s\n", "Number:", "Departure city:", "Arrival city:", "Departure date:", "Arrival date:", "Seat: ");
         System.out.println("-----------------------------------------------------------------------------------------------------------------");

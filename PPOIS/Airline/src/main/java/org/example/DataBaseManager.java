@@ -8,6 +8,10 @@ public class DataBaseManager {
     public static final String PASSWORD_KEY = "db.password";
     public static final String URL_KEY = "db.url";
 
+    /**
+     * opens new connection to database
+     * @return connection to database
+     */
     public static Connection open() {
         try {
             return DriverManager.getConnection(
@@ -20,6 +24,12 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     *
+     * @param username person`s username
+     * @param password person`s password (encoded)
+     * @return user from database by username and password
+     */
     public Person getUserFromDataBase(String username, String password) {
         Person person = null;
         String sql = """
@@ -45,6 +55,13 @@ public class DataBaseManager {
         return person;
     }
 
+    /**
+     * adds new user to database
+     * @param username person`s username
+     * @param password person`s password
+     * @param email person`s email
+     * @return true if successful, false if not
+     */
     public boolean addUser(String username, String password, String email) {
         Person person = null;
         String sql1 = """
@@ -78,6 +95,16 @@ public class DataBaseManager {
         return true;
     }
 
+    /**
+     * adds flight to database
+     * @param flightNo flight number
+     * @param departureTimestamp departure date
+     * @param departureCode departure airport code
+     * @param arrivalTimestamp arrival date
+     * @param arrivalCode arrival airport code
+     * @param aircraftId aircraft id
+     * @param status status of a flight
+     */
     public void addFlight(String flightNo, java.sql.Timestamp departureTimestamp, String departureCode, java.sql.Timestamp arrivalTimestamp, String arrivalCode, int aircraftId, String status) {
         String sql = """
                 INSERT INTO flight(flight_no,departure_date, departure_airport_code, arrival_date, arrival_airport_code, aircraft_id, status)
@@ -98,6 +125,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @return list of flights from database
+     */
     public List<Flight> getFlights(){
         String sql = """
                 SELECT *
@@ -123,6 +153,11 @@ public class DataBaseManager {
         return flights;
     }
 
+    /**
+     * deletes flight by flight number
+     * @param flightNo flight number
+     * @return true if successful, false if not
+     */
     public boolean deleteFlightByFlightNo(String flightNo) {
         String sql = """
                 DELETE FROM flight
@@ -138,6 +173,11 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * checks if airport code of such city exists
+     * @param code airport code
+     * @return true if exists, false if not
+     */
     public boolean isAirportCodeExists(String code) {
         String sql = """
                 SELECT
@@ -154,7 +194,12 @@ public class DataBaseManager {
         }
     }
 
-        public boolean isAircraftIdExists(int aircraftId) {
+    /**
+     * checks if aircraft with such id exists
+     * @param aircraftId id of aircraft
+     * @return true if exists, false if not
+     */
+    public boolean isAircraftIdExists(int aircraftId) {
             String sql = """
                 SELECT
                 EXISTS (SELECT * FROM aircraft WHERE id = ?);
@@ -170,6 +215,11 @@ public class DataBaseManager {
             }
     }
 
+    /**
+     * checks if such city exists
+     * @param city city name
+     * @return true if exists, false if not
+     */
     private boolean isCityExists(String city){
         String sql = """
                 SELECT
@@ -186,6 +236,10 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @param city city name
+     * @return airport code by city
+     */
     public String getAirportCodeFromCity(String city){
         if(!isCityExists(city)){
             return "";
@@ -206,6 +260,10 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @param airportCode airport code
+     * @return city of this airport by code
+     */
     public  String getCityFromAirportCode(String airportCode){
         String sql = """
                 SELECT city
@@ -223,6 +281,11 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @param status status to set for user
+     * @param userId id of user
+     * @return true if successful, false if not
+     */
     public boolean setStatusForUSer(String status, int userId){
         String sql = """
                 UPDATE person
@@ -240,6 +303,11 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * deletes user
+     * @param userId id of a user
+     * @return true if successful, false if not
+     */
     public boolean deleteUser(int userId){
         String sql = """
                 DELETE FROM person
@@ -255,6 +323,9 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @return list of users
+     */
     public List<Person> getUsers(){
         String sql = """
                 SELECT *
@@ -277,6 +348,14 @@ public class DataBaseManager {
         return users;
     }
 
+    /**
+     * add ticket to database
+     * @param userId user id
+     * @param passengerName passenger name
+     * @param flightId flight id
+     * @param seatNo seat number
+     * @return true if successful, false if not
+     */
     public boolean addTicket(int userId, String passengerName, long flightId, String seatNo) {
         String sql1 = """
                 SELECT
@@ -309,7 +388,14 @@ public class DataBaseManager {
         }
     }
 
-
+    /**
+     * deletes ticket from database
+     * @param userId user id
+     * @param passengerName passenger name
+     * @param flightId flight id
+     * @param seatNo seat number
+     * @return true if successful, false if not
+     */
         public boolean deleteTicket(int userId, String passengerName, long flightId, String seatNo){
         String sql = """
                 DELETE FROM ticket
@@ -328,6 +414,11 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @param departureAirportCode code of departure airport
+     * @param arrivalAirportCode code arrival airport
+     * @return list of flights by airport codes
+     */
     public List<Flight> getFlightsByAirportCodesForUsers(String departureAirportCode, String arrivalAirportCode) {
         if(!isAirportCodeExists(departureAirportCode) || !isAirportCodeExists(arrivalAirportCode)){
             return null;
@@ -362,6 +453,12 @@ public class DataBaseManager {
         return flights;
     }
 
+    /**
+     * checks if such seat exists
+     * @param aircraftId aircraft id
+     * @param seatNo seat number
+     * @return true if exists, false if not
+     */
     public boolean isSeatExists(int aircraftId, String seatNo){
         String sql = """
                 SELECT
@@ -380,6 +477,11 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @param aircraftId aircraft id
+     * @param flightId flight id
+     * @return set of available seats on flight
+     */
     public Set<String> getAvailableSeats(int aircraftId, long flightId){
         String sql1 = """
                 SELECT seat_no
@@ -411,7 +513,10 @@ public class DataBaseManager {
         return availableSeats;
     }
 
-
+    /**
+     * @param userId id of a user
+     * @return list of user tickets
+     */
     public List<Ticket> getUserTickets(int userId){
         String sql = """
                 SELECT *
@@ -439,6 +544,10 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * @param id flight id
+     * @return Flight by id
+     */
     public Flight getFlightById(long id){
         String sql = """
                 SELECT *

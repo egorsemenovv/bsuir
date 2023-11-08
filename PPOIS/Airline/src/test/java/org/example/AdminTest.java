@@ -62,12 +62,4 @@ class AdminTest {
                 0));
     }
 
-    @Test
-    void showFlights() {
-        assertTrue(admin.showFlights());
-    }
-    @Test
-    void showUsers() {
-        assertTrue(admin.showUsers());
-    }
 }

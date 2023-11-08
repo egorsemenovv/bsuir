@@ -13,10 +13,18 @@ public final class PropertiesUtil {
     private PropertiesUtil() {
     }
 
+    /**
+     * gets properties from HashTable
+     * @param key property name
+     * @return value from HashTable
+     */
     public static String get(String key) {
         return PROPERTIES.getProperty(key);
     }
 
+    /**
+     * load properties for database connection from application.properties
+     */
     private static void loadProperties() {
         try (var inputStream = PropertiesUtil.class.getClassLoader().getResourceAsStream("application.properties")) {
             PROPERTIES.load(inputStream);

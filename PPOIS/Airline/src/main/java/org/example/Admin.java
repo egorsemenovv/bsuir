@@ -10,11 +10,21 @@ public class Admin extends Person {
     private static final String ADMIN_STATUS = "ADMIN";
     private final DataBaseManager db = new DataBaseManager();
 
+    /**
+     *  create object from database
+     * @param id admin id from database
+     * @param username admin username from database
+     * @param password admin password from database
+     * @param email admin email from database
+     */
     public Admin(int id, String username, String password, String email) {
         super(id, username, password, email, ADMIN_STATUS);
     }
 
-    public boolean showUsers(){
+    /**
+     * display all users on console
+     */
+    public void showUsers(){
         List<Person> users = db.getUsers();
         System.out.println("--------------------------------------------------------------------------");
         System.out.format("%8s %32s %32s\n", "Id:", "Username:", "Email:");
@@ -23,9 +33,13 @@ public class Admin extends Person {
             System.out.format("%8d %32s %32s\n", user.getId(), user.getUsername(), user.getEmail());
         }
         System.out.println("--------------------------------------------------------------------------");
-        return true;
     }
 
+    /**
+     * sets ADMIN status to user
+     * @param userID id of user from database
+     * @return true if successful, false if not
+     */
     public boolean makeUserAdmin(int userID){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input user id: ");
@@ -33,7 +47,10 @@ public class Admin extends Person {
         return db.setStatusForUSer(ADMIN_STATUS, userID);
     }
 
-    public boolean showFlights(){
+    /**
+     * shows all flights
+     */
+    public void showFlights(){
         List<Flight> flights = db.getFlights();
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
         System.out.format("%8s %16s %16s %30s %30s %16s\n","Id:", "Departure city:", "Arrival city:", "Departure date:", "Arrival date:", "Status:");
@@ -49,9 +66,19 @@ public class Admin extends Person {
                     flight.getStatus());
         }
         System.out.println("---------------------------------------------------------------------------------------------------------------------------");
-        return true;
     }
 
+    /**
+     * adds new flight to database
+     * @param flightNo number of flight
+     * @param departure departure date
+     * @param arrival arrival date
+     * @param departureCode code of departure airport
+     * @param arrivalCode code of arrival airport
+     * @param status status of a flight
+     * @param aircraftId id of aircraft
+     * @return true if successful, false if not
+     */
     public boolean addFlight(String flightNo, String departure, String arrival, String departureCode, String arrivalCode, String status, int aircraftId){
         Pattern pattern = Pattern.compile("^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s((0[1-9])|([1-2][0-9])|(3[0-1]))\\s(([0-1][0-9])|(2[0-4]))\\:([0-5][0-9])\\:([0-5][0-9])\\s(\\d{4})$");
         Scanner scanner = new Scanner(System.in);
@@ -99,6 +126,11 @@ public class Admin extends Person {
         return true;
     }
 
+    /**
+     * deletes flight from database
+     * @param flightNo number of flight
+     * @return true if successful, false if not
+     */
     public boolean deleteFlight(String flightNo){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input flight number: ");
