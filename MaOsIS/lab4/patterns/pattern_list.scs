@@ -1,0 +1,23 @@
+lw4_patterns
+    => nrel_main_idtf: [Шаблоны для поиска по БЗ] (* <- lang_ru;; *);
+    -> pattern1;
+    -> pattern2;
+    -> pattern3;
+    -> pattern4;
+    -> pattern5;
+    -> pattern6;
+    -> pattern7;
+    -> pattern8;
+    -> pattern9;
+    -> pattern10;;
+
+pattern1 => nrel_main_idtf: [Найти все объектно ориентированные языки] (* <- lang_ru;; *);;
+pattern2 => nrel_main_idtf: [Найти уровень языка программирования Котлин] (* <- lang_ru;; *);;
+pattern3 => nrel_main_idtf: [Найти тип всех языков] (* <- lang_ru;; *);;
+pattern4 => nrel_main_idtf: [Найти все императивные языки разработанные команией Бэл Лабс] (* <- lang_ru;; *);;
+pattern5 => nrel_main_idtf: [Найти все типизации языков общей специализации и сами языки] (* <- lang_ru;; *);;
+pattern6 => nrel_main_idtf: [Найти все языки запросов] (* <- lang_ru;; *);;
+pattern7 => nrel_main_idtf: [Найти все интерпретируемые скриптовые высокоуровневые языки и их типизацию] (* <- lang_ru;; *);;
+pattern8 => nrel_main_idtf: [Найти все компилируемые высокоуровневые языки программирования с статической типизацией] (* <- lang_ru;; *);;
+pattern9 => nrel_main_idtf: [Найти все типы исполнения] (* <- lang_ru;; *);;
+pattern10 => nrel_main_idtf: [Найти объектно ориентированные языки и их специализацию] (* <- lang_ru;; *);;

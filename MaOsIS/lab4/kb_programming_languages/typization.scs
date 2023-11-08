@@ -1,0 +1,14 @@
+typization_static => nrel_main_idtf: [статический] (* <- lang_ru;; *);
+<- concept_filling;;
+typization_untyped => nrel_main_idtf: [нетипизированный] (* <- lang_ru;; *);
+<- concept_filling;;
+typization_dynamic => nrel_main_idtf: [динамический] (* <- lang_ru;; *);
+<- concept_filling;;
+typization_strong => nrel_main_idtf: [сильный] (* <- lang_ru;; *);
+<- concept_filling;;
+typization_weak => nrel_main_idtf: [слабый] (* <- lang_ru;; *);
+<- concept_filling;;
+typization_explicit => nrel_main_idtf: [явный] (* <- lang_ru;; *);
+<- concept_filling;;
+typization_implicit => nrel_main_idtf: [неявный] (* <- lang_ru;; *);
+<- concept_filling;;

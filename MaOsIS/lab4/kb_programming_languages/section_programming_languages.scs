@@ -1,0 +1,144 @@
+section_programming_languages
+    -> kotlin;
+    -> java;
+    -> cpp;
+    -> c;
+    -> csharp;
+    -> python;
+    -> swift;
+    -> javascript;
+    -> fortran;
+    -> forth;
+    -> sql;;
+
+kotlin
+    => nrel_main_idtf: [kotlin] (* <- lang_en;; *);
+    => nrel_type_of_execution: mixed;
+    => nrel_level: level_high;
+    => nrel_typization: typization_dynamic;
+    => nrel_specialization: specialization_web_development;
+    => nrel_company_developer: JetBrains;
+    => nrel_type: type_object_oriented;
+
+    <- concept_object_oriented_languages;
+    <- concept_programming_languages;;
+
+java
+    => nrel_main_idtf: [java] (* <- lang_en;; *);
+    => nrel_type_of_execution: mixed;
+    => nrel_level: level_high;
+    => nrel_typization: typization_dynamic;
+    => nrel_specialization: specialization_universal;
+    => nrel_company_developer: Sun_Microsystems;
+    => nrel_type: type_object_oriented;
+
+    <- concept_object_oriented_languages;
+    <- concept_programming_languages;;
+
+cpp
+    => nrel_main_idtf: [cpp] (* <- lang_en;; *);
+    => nrel_type_of_execution: compilable;
+    => nrel_level: level_high;
+    => nrel_typization: typization_dynamic;
+    => nrel_specialization: universal;
+    => nrel_company_developer: Bell_Labs;
+    => nrel_type: type_imperative;
+
+    <- concept_imperative_languages;
+    <- concept_programming_languages;;
+
+c
+    => nrel_main_idtf: [c] (* <- lang_en;; *);
+    => nrel_type_of_execution: compilable;
+    => nrel_level: level_low;
+    => nrel_typization: typization_weak;
+    => nrel_specialization: specialization_universal;
+    => nrel_company_developer: Bell_Labs;
+    => nrel_type: type_imperative;
+
+    <- concept_object_oriented_languages;
+    <- concept_programming_languages;;
+
+csharp
+    => nrel_main_idtf: [csharp] (* <- lang_en;; *);
+    => nrel_type_of_execution: mixed;
+    => nrel_level: level_high;
+    => nrel_typization: typization_dynamic;
+    => nrel_specialization: specialization_universal;
+    => nrel_company_developer: Dot_NET_Foundation;
+    => nrel_type: type_object_oriented;
+
+    <- concept_object_oriented_languages;
+    <- concept_programming_languages;;
+
+python
+    => nrel_main_idtf: [python] (* <- lang_en;; *);
+    => nrel_type_of_execution: interpreted;
+    => nrel_level: level_high;
+    => nrel_typization: typization_dynamic;
+    => nrel_specialization: specialization_universal;
+    => nrel_company_developer: Python_Software_Foundation;
+    => nrel_type: type_scripting;
+
+    <- concept_scripting_languages;
+    <- concept_programming_languages;;
+
+swift
+    => nrel_main_idtf: [swift] (* <- lang_en;; *);
+    => nrel_type_of_execution: compilable;
+    => nrel_level: level_high;
+    => nrel_typization: typization_static;
+    => nrel_specialization: specialization_universal;
+    => nrel_company_developer: Apple;
+    => nrel_type: type_imperative;
+
+    <- concept_imperative_languages;
+    <- concept_programming_languages;;
+
+javascript
+    => nrel_main_idtf: [javascript] (* <- lang_en;; *);
+    => nrel_type_of_execution: interpreted;
+    => nrel_level: level_high;
+    => nrel_typization: typization_dynamic;
+    => nrel_specialization: specialization_web_development;
+    => nrel_company_developer: Netscape;
+    => nrel_type: type_imperative;
+
+    <- concept_imperative_languages;
+    <- concept_programming_languages;;
+
+forth
+    => nrel_main_idtf: [forth] (* <- lang_en;; *);
+    => nrel_type_of_execution: mixed;
+    => nrel_level: level_high;
+    => nrel_typization: typization_implicit;
+    => nrel_specialization: specialization_mathematical_computing;
+    => nrel_company_developer: Open_firmware;
+    => nrel_type: type_imperative;
+
+    <- concept_imperative_languages;
+    <- concept_programming_languages;;
+
+sql
+    => nrel_main_idtf: [sql] (* <- lang_en;; *);
+    => nrel_type_of_execution: compilable;
+    => nrel_level: level_high;
+    => nrel_typization: typization_static;
+    => nrel_specialization: specialization_databases;
+    => nrel_company_developer: ISO;
+    => nrel_type: type_query;
+
+    <- concept_query_languages;
+    <- concept_programming_languages;;
+
+fortran
+    => nrel_main_idtf: [fortran] (* <- lang_en;; *);
+    => nrel_type_of_execution: compilable;
+    => nrel_level: level_high;
+    => nrel_typization: typization_static;
+    => nrel_specialization: specialization_mathematical_computing;
+    => nrel_company_developer: IBM;
+    => nrel_type: type_imperative;
+
+    <- concept_imperative_languages;
+    <- concept_programming_languages;;

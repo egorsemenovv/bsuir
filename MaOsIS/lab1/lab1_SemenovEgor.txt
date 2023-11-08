@@ -1,0 +1,35 @@
+programming_languages
+	<-sc_node_class;
+	->concept_java;;
+
+concept_java
+	=>nrel_main_idtf:
+	[джава]
+	(* <- lang_ru;;*);
+	[Java]
+	(* <- lang_en;;*);;
+
+concept_java <= nrel_sc_text_translation:...
+	(*
+		<- definition;;
+		-> [Java - Строго типизированный объектно-ориентированный язык программирования общего назначения, разработанный компанией Sun Microsystems.]
+		(* <- lang_ru;;*);;
+	*);;
+
+concept_java => nrel_areas_of_application:...
+ (*
+
+	<- sc_node_tuple;;
+	-> banking_programs;;
+	-> desktop_applications;;
+	-> web_applications;;
+	-> industrial_programs;;
+ *);;
+
+concept_java => nrel_creator: James_Gosling;;
+people_set
+	<- sc_node_class;
+	-> James_Gosling;;
+
+	
+	

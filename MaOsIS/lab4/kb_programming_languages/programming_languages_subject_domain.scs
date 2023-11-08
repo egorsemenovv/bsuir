@@ -1,0 +1,211 @@
+section_subject_domain_of_programming_languages
+    => nrel_main_idtf: [Раздел. Предметная область языков программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Subject domain of programming languages] (* <- lang_en;; *);
+
+    <= nrel_section_decomposition:
+		{
+			section_imperative_programming_languages;
+			section_functional_programming_languages;
+			section_logic_programming_languages;
+			section_object_oriented_programming_languages;
+			section_scripting_languages;
+			section_markup_languages;
+			section_query_languages
+		};
+
+        -> rrel_key_sc_element:
+		concept_syntax;
+		concept_alphabet;
+		concept_semantics;
+        section_subject_domain_of_programming_languages;
+		lw4_patterns;
+
+	<- non_atomic_section;;
+
+// Sections
+
+section_imperative_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Раздел. Императивные языки программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Imperative programming languages] (* <- lang_en;; *);;
+
+section_functional_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Раздел. Функциональные языки программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Functional programming languages] (* <- lang_en;; *);;
+
+section_logic_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Раздел. Логические языки программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Logic programming languages] (* <- lang_en;; *);;
+
+section_object_oriented_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Раздел. Объектно ориентировачные языки программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Object oriented programming languages] (* <- lang_en;; *);;
+
+section_scripting_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Раздел. Скриптовые языки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Scripting languages] (* <- lang_en;; *);;
+
+section_markup_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Раздел.  Языки разметки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Markup languages] (* <- lang_en;; *);;
+
+section_query_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Раздел.  Языки запросов] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Section. Query languages] (* <- lang_en;; *);;
+
+// Key sc elements
+
+concept_syntax
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Синтаксис] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Syntax] (* <- lang_en;; *);;
+
+concept_alphabet
+    <- sc_node_not_relation;
+    => nrel_main_idtf: [Алфавит] (* <- lang_ru;; *);
+    => nrel_main_idtf: [Alphabet] (* <- lang_en;; *);;
+
+subject_domain_of_imperative_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Предметная область императивных языков программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Subject domain of imperative programming languages] (* <- lang_en;; *);;
+
+subject_domain_of_functional_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Предметная область функциональных языков программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Subject domain of functional programming languages] (* <- lang_en;; *);;
+
+subject_domain_of_logic_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Предметная область логических языков программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Subject domain of logic programming languages] (* <- lang_en;; *);;
+
+subject_domain_of_object_oriented_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Предметная область объектно ориентированных языков программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Subject domain of object oriented programming languages] (* <- lang_en;; *);;
+
+subject_domain_of_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Предметная область языков] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Subject domain of languages] (* <- lang_en;; *);;
+
+concept_programming_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [языки программирования] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [programming languages] (* <- lang_en;; *);;
+
+concept_imperative_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Императивные языки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [imperative languages] (* <- lang_en;; *);;
+
+concept_logic_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Логические языки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Imperative languages] (* <- lang_en;; *);;
+
+concept_functional_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Функциональные языки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Functional languages] (* <- lang_en;; *);;
+
+concept_object_oriented_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Объектно ориентированные языки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Object oriented languages] (* <- lang_en;; *);;
+
+concept_scripting_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Скриптовые языки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Scripting languages] (* <- lang_en;; *);;
+
+concept_markup_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Языки разметки] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Markup languages] (* <- lang_en;; *);;
+
+concept_query_languages
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Языки запросов] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Query languages] (* <- lang_en;; *);;
+
+concept_semantics
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Семантика] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Semantics] (* <- lang_en;; *);;
+
+
+concept_type_of_execution
+	<- sc_node_not_relation;
+	=> nrel_main_idtf: [Тип исполнения] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Type of execution] (* <- lang_en;; *);;
+
+nrel_company_developer
+	<- sc_node_norole_relation;
+	=> nrel_main_idtf: [Компания разработчик*] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Company developer*] (* <- lang_en;; *);;
+
+nrel_type_of_execution
+	<- sc_node_norole_relation;
+	=> nrel_main_idtf: [Тип исполнения*] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Type of execution*] (* <- lang_en;; *);;
+
+nrel_level
+	<- sc_node_norole_relation;
+	=> nrel_main_idtf: [Уровень*] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Level*] (* <- lang_en;; *);;
+
+nrel_typization
+	<- sc_node_norole_relation;
+	=> nrel_main_idtf: [Типизация*] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Typization*] (* <- lang_en;; *);;
+
+nrel_specialization
+	<- sc_node_norole_relation;
+	=> nrel_main_idtf: [Специализация*] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Specialization*] (* <- lang_en;; *);;
+
+nrel_type
+	<- sc_node_norole_relation;
+	=> nrel_main_idtf: [Тип*] (* <- lang_ru;; *);
+	=> nrel_main_idtf: [Type*] (* <- lang_en;; *);;
+
+
+// Subject domain
+section_subject_domain_of_programming_languages= [*
+
+	subject_domain_of_programming_languages
+		<- sc_node_not_relation;
+		=> nrel_main_idtf: [Предметная область языков программирования] (* <- lang_ru;; *);
+    	=> nrel_main_idtf: [Subject domain of programming languages] (* <- lang_en;; *);
+
+		-> rrel_maximum_studied_object_class:
+			concept_programming_languages;
+
+		<- rrel_not_maximum_studied_object_class:
+			concept_syntax;
+            concept_alphabet;
+            concept_semantics;
+
+		-> rrel_studied_relation:
+			nrel_company_developer;
+
+		=> nrel_private_subject_domain:
+			subject_domain_of_imperative_programming_languages;
+			subject_domain_of_functional_programming_languages;
+			subject_domain_of_logic_programming_languages;
+			subject_domain_of_object_oriented_programming_languages;
+
+		<= nrel_private_subject_domain:
+			subject_domain_of_languages;
+
+		<- subject_domain;;
+
+*];;
