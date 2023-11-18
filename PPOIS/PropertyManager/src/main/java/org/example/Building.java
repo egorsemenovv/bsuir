@@ -1,19 +1,26 @@
 package org.example;
 
+import java.util.List;
+
 public enum Building {
-    APARTMENT("Apartment"),
-    HOUSE("House"),
-    VILLA("Villa"),
-    MANSION("Mansion"),
-    COTTAGE("Cottage");
+    APARTMENT("APARTMENT"),
+    HOUSE("HOUSE"),
+    VILLA("VILLA"),
+    MANSION("MANSION"),
+    COTTAGE("COTTAGE");
+    private final DatabaseManager db = new DatabaseManager();
+    private final String type;
 
-    private final String title;
-
-    Building(String title){
-        this.title=title;
+    Building(String type) {
+        this.type = type;
     }
 
-    public String getTitle(){
-        return title;
+    public String getType() {
+        return type;
     }
+
+    public List<Property> findAll(){
+        return db.getPropertiesByType(Building.this);
+    }
+
 }

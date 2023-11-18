@@ -1,10 +1,12 @@
 package org.example;
 
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.function.Consumer;
 
 public class Authentication {
-    public Person person;
-    private static final DataBaseManager db = new DataBaseManager();
+    public static User user;
+    private static final DatabaseManager db = new DatabaseManager();
 
     /**
      * to log in into your account
@@ -12,22 +14,13 @@ public class Authentication {
      * @param password person`s password
      * @return true if successful, false if not
      */
-    public boolean logIn(String username,String password) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Username: ");
-//        String username = "First User"; // scanner.nextLine();
-        System.out.println("Password: ");
-//        String password = scanner.nextLine();
-        if (!Password.isAppropriate(password)) {
-            System.out.println("Wrong password");
-            return false;
+    public static boolean logIn(String username,String password) {
+        Optional<User> opt = db.getUserFromDatabase(username, password);
+        if(opt.isPresent()) {
+            user = opt.get();
+            return true;
         }
-        person = db.getUserFromDataBase(username, Password.encode(password));
-        if (person == null){
-            System.out.println("No such user. Try again...");
-            return false;
-        }
-        return true;
+        return false;
     }
 
     /**
@@ -37,18 +30,7 @@ public class Authentication {
      * @param email person`s email
      * @return true if successful, false if not
      */
-    public boolean signUp(String username,String password, String email) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Username: ");
-//        String username = scanner.nextLine();
-        System.out.println("Password: ");
-//        String password = scanner.nextLine();
-        if (!Password.isAppropriate(password)) {
-            System.out.println("Wrong password");
-            return false;
-        }
-        System.out.println("Email: ");
-//        String email = scanner.nextLine();
-        return db.addUser(username, Password.encode(password), email);
+    public boolean signUp(String username,String password, String phoneNumber, String email) {
+        return db.addUser(username, Password.encode(password), phoneNumber, email);
     }
 }
