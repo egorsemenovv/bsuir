@@ -1,4 +1,4 @@
-package org.example;
+package org.example.database;
 
 import java.io.IOException;
 import java.util.Properties;

@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.database.DatabaseManager;
+import org.example.user.Property;
+
 import java.util.List;
 
 public enum Building {

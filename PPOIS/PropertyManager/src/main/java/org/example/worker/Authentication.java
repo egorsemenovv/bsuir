@@ -1,11 +1,12 @@
-package org.example;
+package org.example.worker;
+
+import org.example.Password;
+import org.example.database.DatabaseManager;
 
 import java.util.Optional;
-import java.util.Scanner;
-import java.util.function.Consumer;
 
 public class Authentication {
-    public static User user;
+    public static Worker worker;
     private static final DatabaseManager db = new DatabaseManager();
 
     /**
@@ -15,9 +16,9 @@ public class Authentication {
      * @return true if successful, false if not
      */
     public static boolean logIn(String username,String password) {
-        Optional<User> opt = db.getUserFromDatabase(username, password);
+        Optional<Worker> opt = db.getWorkerFromDatabase(username, password);
         if(opt.isPresent()) {
-            user = opt.get();
+            worker = opt.get();
             return true;
         }
         return false;
@@ -25,12 +26,12 @@ public class Authentication {
 
     /**
      * creates new user
-     * @param username person`s username
-     * @param password person`s password
-     * @param email person`s email
+     * @param username worker`s username
+     * @param password worker`s password
+     * @param payment worker`s payment
      * @return true if successful, false if not
      */
-    public boolean signUp(String username,String password, String phoneNumber, String email) {
-        return db.addUser(username, Password.encode(password), phoneNumber, email);
+    public boolean signUp(String username,String password, Employee employee) {
+        return db.addWorkerToDatabase(username, Password.encode(password), employee);
     }
 }

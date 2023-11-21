@@ -1,4 +1,6 @@
-package org.example;
+package org.example.user;
+
+import org.example.Building;
 
 public class Property {
     private int id;
