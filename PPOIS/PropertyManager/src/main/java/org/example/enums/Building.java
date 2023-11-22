@@ -18,11 +18,19 @@ public enum Building {
         this.type = type;
     }
 
+    /**
+     * @return type of building
+     */
     public String getType() {
         return type;
     }
 
-    public List<Property> findAll(){
+    /**
+     * finds all buildings with such type
+     *
+     * @return list of properties
+     */
+    public List<Property> findAll() {
         return db.getPropertiesByType(Building.this);
     }
 

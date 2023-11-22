@@ -19,6 +19,9 @@ public class Service {
         this.status = status;
     }
 
+    /**
+     * @return id of property
+     */
     public long getId() {
         return id;
     }

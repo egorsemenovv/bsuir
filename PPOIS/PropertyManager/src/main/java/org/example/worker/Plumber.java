@@ -15,29 +15,39 @@ public class Plumber extends Worker {
         currentOrder = db.getWorkerOrder(id);
     }
 
+    /**
+     * takes first founded requested service for a worker
+     *
+     * @return true if successful, false if not
+     */
     @Override
     public boolean startWork() {
-        if(currentOrder.isPresent()){
+        if (currentOrder.isPresent()) {
             return false;
         }
         Optional<Service> service = db.takeWork(super.getId(), type.getType());
-        if(service.isPresent()){
+        if (service.isPresent()) {
             System.out.println("Plumber started work");
             currentOrder = service;
             System.out.println(service.get());
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
+    /**
+     * ends work, gets payment and close a request for service
+     *
+     * @return true if successful, false if not
+     */
     @Override
     public boolean endWork() {
-        if(currentOrder.isEmpty()){
+        if (currentOrder.isEmpty()) {
             return false;
         }
         db.setStatusForWorker(super.getId(), false);
-        db.setStatusAndWorkerIdForService(currentOrder.get().getId(), super.getId(),"FINISHED");
+        db.setStatusAndWorkerIdForService(currentOrder.get().getId(), super.getId(), "FINISHED");
         super.setBalance(super.getBalance().add(Employee.PLUMBER.getPayment()));
         db.updateBalanceForWorker(super.getId(), super.getBalance());
         currentOrder = Optional.empty();

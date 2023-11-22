@@ -37,6 +37,13 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * gets user from database
+     *
+     * @param username        person`s username
+     * @param encodedPassword person`s password (encoded)
+     * @return user if such exists
+     */
     public Optional<User> getUserFromDatabase(String username, String encodedPassword) {
 
         Optional<User> user = Optional.empty();
@@ -65,6 +72,16 @@ public class DatabaseManager {
         }
         return user;
     }
+
+    /**
+     * adds user to database
+     *
+     * @param username        person`s username
+     * @param encodedPassword person`s password (encoded)
+     * @param phoneNUmber     person`s phone number
+     * @param email           person`s email
+     * @return true if successful, false if not
+     */
     public boolean addUserToDatabase(String username, String encodedPassword, String phoneNUmber, String email) {
         String sql1 = """
                 SELECT
@@ -97,7 +114,19 @@ public class DatabaseManager {
         return true;
     }
 
-    public boolean addPropertyToDatabase(int personId, int square, int floors, String address, String description, java.math.BigDecimal price, Building buildingType){
+    /**
+     * adds property to database
+     *
+     * @param personId     property`s id
+     * @param square       property`s square
+     * @param floors       property`s number of floors
+     * @param address      property`s address
+     * @param description  property`s description
+     * @param price        property`s price
+     * @param buildingType property`s type
+     * @return true if successful, false if not
+     */
+    public boolean addPropertyToDatabase(int personId, int square, int floors, String address, String description, java.math.BigDecimal price, Building buildingType) {
         String sql1 = """
                 SELECT
                 EXISTS( SELECT * FROM property WHERE address = ?);
@@ -131,7 +160,13 @@ public class DatabaseManager {
         return true;
     }
 
-    public boolean deletePropertyFromDatabase(String address){
+    /**
+     * deletes property from database by address
+     *
+     * @param address property`s address
+     * @return true if successful false if not
+     */
+    public boolean deletePropertyFromDatabase(String address) {
         String sql = """
                 DELETE FROM property
                 where address = ?;
@@ -145,7 +180,13 @@ public class DatabaseManager {
         }
     }
 
-    public List<Property> getPropertiesByType(Building buildingType){
+    /**
+     * gets properties by their type
+     *
+     * @param buildingType property`s type
+     * @return linked list of properties with such type
+     */
+    public List<Property> getPropertiesByType(Building buildingType) {
         List<Property> propertiesList = new LinkedList<>();
         String sql = """
                 SELECT *
@@ -153,10 +194,10 @@ public class DatabaseManager {
                 WHERE type = ?;
                 """;
         try (var connection = DatabaseManager.open();
-        var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, buildingType.getType());
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 propertiesList.add(new Property(
                         resultSet.getInt(1),
                         resultSet.getInt(2),
@@ -174,8 +215,15 @@ public class DatabaseManager {
         return propertiesList;
     }
 
+    /**
+     * gets worker from database
+     *
+     * @param username        worker`s username
+     * @param encodedPassword workers`s password (encoded)
+     * @return worker if such exists
+     */
     public Optional<Worker> getWorkerFromDatabase(String username, String encodedPassword) {
-        Optional<Worker> worker=Optional.empty();
+        Optional<Worker> worker = Optional.empty();
         String sql = """
                 SELECT *
                 FROM worker
@@ -187,7 +235,7 @@ public class DatabaseManager {
             preparedStatement.setString(2, encodedPassword);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                if (resultSet.getString(6).equals(Employee.PLUMBER.getType())){
+                if (resultSet.getString(6).equals(Employee.PLUMBER.getType())) {
                     worker = Optional.of(new Plumber(resultSet.getInt(1),
                             resultSet.getString(2),
                             resultSet.getString(3),
@@ -207,6 +255,14 @@ public class DatabaseManager {
         return worker;
     }
 
+    /**
+     * adds worker to database
+     *
+     * @param username        worker`s username
+     * @param encodedPassword worker`s password (encoded)
+     * @param employee        worker`s position
+     * @return true if successful, false if not
+     */
     public boolean addWorkerToDatabase(String username, String encodedPassword, Employee employee) {
         String sql1 = """
                 SELECT
@@ -238,13 +294,20 @@ public class DatabaseManager {
         return true;
     }
 
-    public boolean addRequestForService(int propertyId, Employee employee){
+    /**
+     * adds request for a service
+     *
+     * @param propertyId property`s id
+     * @param employee   needed worker`s position
+     * @return true if successful, false if not
+     */
+    public boolean addRequestForService(int propertyId, Employee employee) {
         String sql = """
                 INSERT INTO service(property_id, worker_type, worker_id, status)
                 VALUES (?,?, null,'REQUESTED')
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, propertyId);
             preparedStatement.setString(2, employee.getType());
             return preparedStatement.execute();
@@ -252,14 +315,23 @@ public class DatabaseManager {
             throw new RuntimeException(e);
         }
     }
-    public boolean setStatusAndWorkerIdForService(long serviceId, int workerId, String status){
+
+    /**
+     * sets status for worker by id in service table
+     *
+     * @param serviceId service`s id
+     * @param workerId  worker`s id
+     * @param status    status of a service (REQUESTED || WORKING || FINISHED)
+     * @return true if successful, false if not
+     */
+    public boolean setStatusAndWorkerIdForService(long serviceId, int workerId, String status) {
         String sql = """
                 UPDATE service
                 SET status = ?, worker_id = ?
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(3, serviceId);
             preparedStatement.setInt(2, workerId);
             preparedStatement.setString(1, status);
@@ -268,14 +340,22 @@ public class DatabaseManager {
             throw new RuntimeException(e);
         }
     }
-    public boolean setStatusForWorker(int workerId, boolean status){
+
+    /**
+     * sets status for worker (busy or not)
+     *
+     * @param workerId worker`s id
+     * @param status   true or false (busy or not)
+     * @return true if successful, false if not
+     */
+    public boolean setStatusForWorker(int workerId, boolean status) {
         String sql = """
                 UPDATE worker
                 SET busy = ?
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(2, workerId);
             preparedStatement.setBoolean(1, status);
             return preparedStatement.execute();
@@ -283,16 +363,23 @@ public class DatabaseManager {
             throw new RuntimeException(e);
         }
     }
-    private int getAvailableServiceId(String workerType){
+
+    /**
+     * gets id of a requested service
+     *
+     * @param workerType worker`s position
+     * @return first found requested service (if not - 0)
+     */
+    private int getAvailableServiceId(String workerType) {
         String sql = """
                 SELECT DISTINCT id
                 FROM service
                 WHERE status = 'REQUESTED';
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return resultSet.getInt(1);
             }
         } catch (SQLException e) {
@@ -300,7 +387,15 @@ public class DatabaseManager {
         }
         return 0;
     }
-    public Optional<Service> takeWork(int workerId, String workerType){
+
+    /**
+     * takes work for a worker
+     *
+     * @param workerId   worker`s id
+     * @param workerType worker`s position
+     * @return requested service
+     */
+    public Optional<Service> takeWork(int workerId, String workerType) {
         String sql1 = """
                 SELECT *
                 FROM service
@@ -313,19 +408,19 @@ public class DatabaseManager {
                 """;
         try (var connection = DatabaseManager.open();
              var preparedStatement1 = connection.prepareStatement(sql1);
-             var preparedStatement2 = connection.prepareStatement(sql2)){
+             var preparedStatement2 = connection.prepareStatement(sql2)) {
             preparedStatement2.setInt(1, workerId);
             ResultSet resultSet2 = preparedStatement2.executeQuery();
             resultSet2.next();
-            if(resultSet2.getBoolean(1)){
+            if (resultSet2.getBoolean(1)) {
                 return Optional.empty();
             }
             int availableServiceId = getAvailableServiceId(workerType);
-            if(availableServiceId==0){
+            if (availableServiceId == 0) {
                 return Optional.empty();
             }
             setStatusForWorker(workerId, true);
-            setStatusAndWorkerIdForService(availableServiceId, workerId,"WORKING");
+            setStatusAndWorkerIdForService(availableServiceId, workerId, "WORKING");
             preparedStatement1.setInt(1, availableServiceId);
             ResultSet resultSet = preparedStatement1.executeQuery();
             resultSet.next();
@@ -339,17 +434,23 @@ public class DatabaseManager {
         }
     }
 
-    public String getAddressByPropertyId(int propertyId){
+    /**
+     * gets address by property id
+     *
+     * @param propertyId property`s id
+     * @return address of a property
+     */
+    public String getAddressByPropertyId(int propertyId) {
         String sql = """
                 SELECT address
                 FROM property
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, propertyId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return resultSet.getString(1);
             }
         } catch (SQLException e) {
@@ -358,18 +459,24 @@ public class DatabaseManager {
         return "";
     }
 
-    public Optional<Service> getWorkerOrder(int workerId){
+    /**
+     * gets service on which employee is working on
+     *
+     * @param workerId worker`s id
+     * @return service the employee is working on
+     */
+    public Optional<Service> getWorkerOrder(int workerId) {
         String sql = """
                 SELECT *
                 FROM service
                 WHERE worker_id = ? AND status = 'WORKING';
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, workerId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
-               return Optional.of(new Service(resultSet.getLong(1),
+            if (resultSet.next()) {
+                return Optional.of(new Service(resultSet.getLong(1),
                         resultSet.getInt(2),
                         Employee.valueOf(resultSet.getString(3)),
                         resultSet.getInt(4),
@@ -381,14 +488,21 @@ public class DatabaseManager {
         return Optional.empty();
     }
 
-    public boolean updateBalanceForUser(int userId, java.math.BigDecimal balance){
+    /**
+     * updates user`s balance in database
+     *
+     * @param userId  user`s id
+     * @param balance user`s balance
+     * @return true if successful, false if not
+     */
+    public boolean updateBalanceForUser(int userId, java.math.BigDecimal balance) {
         String sql = """
                 UPDATE person
                 SET balance = ?
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setBigDecimal(1, balance);
             preparedStatement.setInt(2, userId);
             return preparedStatement.execute();
@@ -397,14 +511,21 @@ public class DatabaseManager {
         }
     }
 
-    public boolean updateBalanceForWorker(int workerId, java.math.BigDecimal balance){
+    /**
+     * updates worker`s balance in database
+     *
+     * @param workerId worker`s id
+     * @param balance  worker`s balance
+     * @return true if successful, false if not
+     */
+    public boolean updateBalanceForWorker(int workerId, java.math.BigDecimal balance) {
         String sql = """
                 UPDATE worker
                 SET balance = ?
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setBigDecimal(1, balance);
             preparedStatement.setInt(2, workerId);
             return preparedStatement.execute();
@@ -413,14 +534,22 @@ public class DatabaseManager {
         }
     }
 
-    public boolean setStatusForProperty(int userId, int propertyId , boolean status){
+    /**
+     * sets status for property (for sale or not)
+     *
+     * @param userId     user`s id
+     * @param propertyId property`s id
+     * @param status     status (boolean, for sale or not)
+     * @return true if successful, false if not
+     */
+    public boolean setStatusForProperty(int userId, int propertyId, boolean status) {
         String sql = """
                 UPDATE property
                 SET for_sale = ?
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(2, propertyId);
             preparedStatement.setBoolean(1, status);
             return preparedStatement.execute();
@@ -429,6 +558,12 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * gets property`s price by id
+     *
+     * @param propertyId property`s id
+     * @return price
+     */
     public java.math.BigDecimal getPropertyPrice(int propertyId) {
         String sql = """
                 SELECT price
@@ -436,7 +571,7 @@ public class DatabaseManager {
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, propertyId);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -446,14 +581,21 @@ public class DatabaseManager {
         }
     }
 
-    public boolean setUserIdForProperty(int userId, int propertyId){
+    /**
+     * sets id for property
+     *
+     * @param userId     user`s id
+     * @param propertyId property`s id
+     * @return true if successful, false if not
+     */
+    public boolean setUserIdForProperty(int userId, int propertyId) {
         String sql = """
                 UPDATE property
                 SET person_id = ?
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, userId);
             preparedStatement.setInt(2, propertyId);
             return preparedStatement.execute();
@@ -462,17 +604,23 @@ public class DatabaseManager {
         }
     }
 
-    public int getUserIdFromProperty(int propertyId){
+    /**
+     * gets owner`s id from properties table by property`s id
+     *
+     * @param propertyId property`s id
+     * @return user`s id
+     */
+    public int getUserIdFromProperty(int propertyId) {
         String sql = """
                 SELECT person_id
                 FROM property
                 WHERE id = ?;
                 """;
         try (var connection = DatabaseManager.open();
-             var preparedStatement = connection.prepareStatement(sql)){
+             var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, propertyId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return resultSet.getInt(1);
             }
         } catch (SQLException e) {
@@ -481,7 +629,12 @@ public class DatabaseManager {
         return 0;
     }
 
-    public boolean clearAllRequestedService(){
+    /**
+     * clears all REQUESTED services
+     *
+     * @return true if successful, false if not
+     */
+    public boolean clearAllRequestedService() {
         String sql = """
                 DELETE FROM service
                 where status = 'REQUESTED';
@@ -494,7 +647,13 @@ public class DatabaseManager {
         }
     }
 
-    public boolean deleteUserByUsername(String username){
+    /**
+     * deletes user from database by user`s login
+     *
+     * @param username user`s login
+     * @return true if successful, false if not
+     */
+    public boolean deleteUserByUsername(String username) {
         String sql = """
                 DELETE FROM person
                 where username = ?;
@@ -508,6 +667,12 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * deletes worker from database by worker`s login
+     *
+     * @param username worker`s login
+     * @return true if successful, false if not
+     */
     public boolean deleteWorkerByUsername(String username) {
         String sql = """
                 DELETE FROM worker

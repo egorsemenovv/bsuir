@@ -19,9 +19,10 @@ class ElectricianTest {
     private static final DatabaseManager db = new DatabaseManager();
 
     @BeforeAll
-    static void startUp(){
+    static void startUp() {
         db.addRequestForService(1, Employee.ELECTRICIAN);
     }
+
     @Test
     void startWork() {
         assertTrue(workerElectrician.startWork());
@@ -35,7 +36,7 @@ class ElectricianTest {
     }
 
     @AfterAll
-    static void clear(){
+    static void clear() {
         db.updateBalanceForWorker(1, new BigDecimal("0.00"));
     }
 }

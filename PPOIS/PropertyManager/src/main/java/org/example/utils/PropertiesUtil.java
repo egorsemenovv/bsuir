@@ -15,6 +15,7 @@ public final class PropertiesUtil {
 
     /**
      * gets properties from HashTable
+     *
      * @param key property name
      * @return value from HashTable
      */

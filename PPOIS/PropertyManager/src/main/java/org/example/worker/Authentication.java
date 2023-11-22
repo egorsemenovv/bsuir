@@ -12,14 +12,15 @@ public class Authentication {
 
     /**
      * to log in into your account
-     * @param username person`s username
-     * @param password person`s password
+     *
+     * @param username worker`s username
+     * @param password worker`s password
      * @return true if successful, false if not
      */
-    public boolean logIn(String username,String password) {
-        password= Password.encode(password);
+    public boolean logIn(String username, String password) {
+        password = Password.encode(password);
         Optional<Worker> opt = db.getWorkerFromDatabase(username, password);
-        if(opt.isPresent()) {
+        if (opt.isPresent()) {
             this.worker = opt.get();
             return true;
         }
@@ -28,12 +29,13 @@ public class Authentication {
 
     /**
      * creates new user
+     *
      * @param username worker`s username
      * @param password worker`s password
      * @param employee worker`s position
      * @return true if successful, false if not
      */
-    public boolean signUp(String username,String password, Employee employee) {
+    public boolean signUp(String username, String password, Employee employee) {
         if (!Password.isAppropriate(password)) {
             return false;
         }

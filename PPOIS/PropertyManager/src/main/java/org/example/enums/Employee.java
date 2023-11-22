@@ -11,9 +11,17 @@ public enum Employee {
         this.type=type;
         this.payment=payment;
     }
+
+    /**
+     * @return type of work
+     */
     public String getType() {
         return type;
     }
+
+    /**
+     * @return payment for worker
+     */
     public java.math.BigDecimal getPayment() {
         return payment;
     }

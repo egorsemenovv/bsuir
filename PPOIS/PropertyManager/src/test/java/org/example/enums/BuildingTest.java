@@ -1,6 +1,5 @@
 package org.example.enums;
 
-import org.example.enums.Building;
 import org.example.user.Property;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,9 +11,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BuildingTest {
-    private static final List<Property> properties = new LinkedList<> ();
+    private static final List<Property> properties = new LinkedList<>();
+
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
         properties.add(new Property(1,
                 1,
                 150,
@@ -24,6 +24,7 @@ class BuildingTest {
                 new BigDecimal("20000000.00"),
                 Building.APARTMENT));
     }
+
     @Test
     void findAll() {
         assertEquals(properties, Building.APARTMENT.findAll());

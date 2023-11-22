@@ -24,11 +24,31 @@ public class User {
         this.email = email;
         this.balance = balance;
     }
-    public boolean addProperty(int square, int floors, String address, String description, java.math.BigDecimal price, Building building){
+
+    /**
+     * adds property to database
+     *
+     * @param square      property`s square
+     * @param floors      property`s number of floors
+     * @param address     property`s address
+     * @param description property`s description
+     * @param price       property`s price
+     * @param building    property`s type of building
+     * @return true if successful, false if not
+     */
+    public boolean addProperty(int square, int floors, String address, String description, java.math.BigDecimal price, Building building) {
         return db.addPropertyToDatabase(this.id, square, floors, address, description, price, building);
     }
-    public boolean callPlumber(int propertyID) throws NotEnoughMoneyException{
-        if(balance.compareTo(Employee.PLUMBER.getPayment())<0){
+
+    /**
+     * adding request for a plumber
+     *
+     * @param propertyID property`s id
+     * @return true if successful, false if not
+     * @throws NotEnoughMoneyException
+     */
+    public boolean callPlumber(int propertyID) throws NotEnoughMoneyException {
+        if (balance.compareTo(Employee.PLUMBER.getPayment()) < 0) {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nService price: " + Employee.PLUMBER.getPayment());
         }
         balance = balance.subtract(Employee.PLUMBER.getPayment());
@@ -37,8 +57,15 @@ public class User {
         return true;
     }
 
-    public boolean callElectrician(int propertyId) throws NotEnoughMoneyException{
-        if(balance.compareTo(Employee.ELECTRICIAN.getPayment())<0){
+    /**
+     * adding request for an electrician
+     *
+     * @param propertyId property`s id
+     * @return true if successful, false if not
+     * @throws NotEnoughMoneyException
+     */
+    public boolean callElectrician(int propertyId) throws NotEnoughMoneyException {
+        if (balance.compareTo(Employee.ELECTRICIAN.getPayment()) < 0) {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nService price: " + Employee.ELECTRICIAN.getPayment());
         }
         balance = balance.subtract(Employee.ELECTRICIAN.getPayment());
@@ -47,8 +74,14 @@ public class User {
         return true;
     }
 
-    public boolean sellProperty(int propertyId){
-        if(db.setStatusForProperty(this.id, propertyId, true)){
+    /**
+     * sells property
+     *
+     * @param propertyId property`s id
+     * @return true if successful, false if not
+     */
+    public boolean sellProperty(int propertyId) {
+        if (db.setStatusForProperty(this.id, propertyId, true)) {
             return false;
         }
         java.math.BigDecimal price = db.getPropertyPrice(propertyId);
@@ -57,9 +90,16 @@ public class User {
         return true;
     }
 
+    /**
+     * buys property
+     *
+     * @param propertyId property id
+     * @return true if successful, false if not
+     * @throws NotEnoughMoneyException
+     */
     public boolean buyProperty(int propertyId) throws NotEnoughMoneyException {
         java.math.BigDecimal price = db.getPropertyPrice(propertyId);
-        if(balance.compareTo(price) < 0){
+        if (balance.compareTo(price) < 0) {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nProperty price is: " + price);
         } else if (db.getUserIdFromProperty(propertyId) == this.id) {
             System.out.println("It`s already your property");

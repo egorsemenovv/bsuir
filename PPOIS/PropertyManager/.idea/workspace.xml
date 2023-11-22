@@ -4,22 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f31fd3f7-62f4-4d9d-af65-7e24b28f80fd" name="Changes" comment="Implemented User.buyProperty and User.sellProperty. Added Tests">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/enums/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/NotEnoughMoneyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exceptions/NotEnoughMoneyException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/utils/Password.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Service.java" afterDir="false" />
+    <list default="true" id="f31fd3f7-62f4-4d9d-af65-7e24b28f80fd" name="Changes" comment="Refactoring">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/database/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/database/PropertiesUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/utils/PropertiesUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/enums/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/enums/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/enums/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/enums/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/Property.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/utils/Password.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/utils/Password.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/utils/PropertiesUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/utils/PropertiesUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/worker/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Authentication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/worker/Electrician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Electrician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/worker/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/enums/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/worker/Plumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Plumber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/BuildingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/enums/BuildingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/worker/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/enums/BuildingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/enums/BuildingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/user/AuthenticationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/user/AuthenticationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/user/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/user/UserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/worker/AuthenticationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/worker/AuthenticationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/worker/ElectricianTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/worker/ElectricianTest.java" afterDir="false" />
@@ -199,7 +200,7 @@
       <workItem from="1700575831545" duration="23092000" />
       <workItem from="1700633054668" duration="4206000" />
       <workItem from="1700641277650" duration="2212000" />
-      <workItem from="1700661304393" duration="12407000" />
+      <workItem from="1700661304393" duration="15230000" />
     </task>
     <task id="LOCAL-00001" summary="started work on Property Management.">
       <option name="closed" value="true" />
@@ -233,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700674804962</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1700675096627</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700675096627</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,13 +253,14 @@
     <MESSAGE value="adding logic to find properties by their type from database" />
     <MESSAGE value="Implemented Plumber and Electrician classes that extend abstract class - Worker. Also added the logic of calling employees by users." />
     <MESSAGE value="Implemented User.buyProperty and User.sellProperty. Added Tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented User.buyProperty and User.sellProperty. Added Tests" />
+    <MESSAGE value="Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PropertyManager$UserTest.ic" NAME="UserTest Coverage Results" MODIFIED="1700668643676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.example.user.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/PropertyManager$All_in_PropertyManager.ic" NAME="All in PropertyManager Coverage Results" MODIFIED="1700674687837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/PropertyManager$All_in_PropertyManager.ic" NAME="All in PropertyManager Coverage Results" MODIFIED="1700675241436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/PropertyManager$AuthenticationTest.ic" NAME="AuthenticationTest Coverage Results" MODIFIED="1700672159247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>org.example.user.*</FILTER>
     </SUITE>

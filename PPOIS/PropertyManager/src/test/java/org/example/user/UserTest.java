@@ -82,12 +82,12 @@ class UserTest {
     }
 
     @AfterAll
-    static void clear(){
+    static void clear() {
         db.deletePropertyFromDatabase("TestAddress");
         db.clearAllRequestedService();
         db.setStatusForProperty(1, 1, false);
-        db.setUserIdForProperty(1,1);
-        db.setUserIdForProperty(2,2);
+        db.setUserIdForProperty(1, 1);
+        db.setUserIdForProperty(2, 2);
         db.updateBalanceForUser(1, new BigDecimal("999999999.00"));
         db.updateBalanceForUser(1, new BigDecimal("0.00"));
     }

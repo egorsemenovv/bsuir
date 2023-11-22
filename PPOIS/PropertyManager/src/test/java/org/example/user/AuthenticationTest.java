@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AuthenticationTest {
     private static final Authentication authentication = new Authentication();
+
     @Test
     void logIn() {
         assertTrue(authentication.logIn("Test User", "12345user!"));

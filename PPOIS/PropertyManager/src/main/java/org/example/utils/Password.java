@@ -8,13 +8,14 @@ import java.util.regex.Pattern;
 
 public final class Password {
 
-    private Password(){}
+    private Password() {
+    }
 
     /**
      * @param password password
      * @return true if password is appropriate, false if not
      */
-    public static boolean isAppropriate(String password){
+    public static boolean isAppropriate(String password) {
         Pattern pattern = Pattern.compile("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!#$%&? \"]).*$");
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
@@ -22,10 +23,11 @@ public final class Password {
 
     /**
      * encode password to store in database
+     *
      * @param password password
      * @return encoded string
      */
-    public static String encode (String password) {
+    public static String encode(String password) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("SHA-256");

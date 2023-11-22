@@ -16,6 +16,12 @@ public class Electrician extends Worker {
         super(id, username, password, payment, balance);
         currentOrder = db.getWorkerOrder(id);
     }
+
+    /**
+     * takes first founded requested service for a worker
+     *
+     * @return true if successful, false if not
+     */
     @Override
     public boolean startWork() {
         if(currentOrder.isPresent()){
@@ -32,6 +38,10 @@ public class Electrician extends Worker {
         }
     }
 
+    /**
+     * ends work, gets payment and close a request for service
+     * @return true if successful, false if not
+     */
     @Override
     public boolean endWork() {
         if(currentOrder.isEmpty()){
