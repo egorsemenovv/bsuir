@@ -6,8 +6,8 @@ import org.example.database.DatabaseManager;
 import java.util.Optional;
 
 public class Authentication {
-    public static Worker worker;
-    private static final DatabaseManager db = new DatabaseManager();
+    public Worker worker;
+    private final DatabaseManager db = new DatabaseManager();
 
     /**
      * to log in into your account
@@ -15,10 +15,11 @@ public class Authentication {
      * @param password person`s password
      * @return true if successful, false if not
      */
-    public static boolean logIn(String username,String password) {
+    public boolean logIn(String username,String password) {
+        password= Password.encode(password);
         Optional<Worker> opt = db.getWorkerFromDatabase(username, password);
         if(opt.isPresent()) {
-            worker = opt.get();
+            this.worker = opt.get();
             return true;
         }
         return false;
@@ -28,10 +29,13 @@ public class Authentication {
      * creates new user
      * @param username worker`s username
      * @param password worker`s password
-     * @param payment worker`s payment
+     * @param employee worker`s position
      * @return true if successful, false if not
      */
     public boolean signUp(String username,String password, Employee employee) {
+        if (!Password.isAppropriate(password)) {
+            return false;
+        }
         return db.addWorkerToDatabase(username, Password.encode(password), employee);
     }
 }

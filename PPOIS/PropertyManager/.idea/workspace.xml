@@ -4,21 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f31fd3f7-62f4-4d9d-af65-7e24b28f80fd" name="Changes" comment="adding logic to find properties by their type from database">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Authentication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Electrician.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Plumber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Worker.java" afterDir="false" />
+    <list default="true" id="f31fd3f7-62f4-4d9d-af65-7e24b28f80fd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/NotEnoughMoneyException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/BuildingTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/user/AuthenticationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/user/UserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/worker/AuthenticationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/worker/ElectricianTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/worker/PlumberTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/Authentication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/database/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/PropertiesUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/database/PropertiesUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/Property.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/database/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/Authentication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/Property.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/worker/Authentication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/worker/Authentication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +30,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -45,42 +46,106 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/kaman/OneDrive/Рабочий стол/bsuir/PPOIS/Airline&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/kaman/OneDrive/Рабочий стол/bsuir/PPOIS/Airline",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.example" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example" />
+      <recent name="org.example.worker" />
+      <recent name="org.example.user" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.worker" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+  <component name="RunManager" selected="JUnit.All in PropertyManager">
+    <configuration name="All in PropertyManager" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PropertyManager" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthenticationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PropertyManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.user.AuthenticationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthenticationTest.logIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PropertyManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.user.AuthenticationTest" />
+      <option name="METHOD_NAME" value="logIn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthenticationTest.signUp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PropertyManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.user" />
+      <option name="MAIN_CLASS_NAME" value="org.example.user.AuthenticationTest" />
+      <option name="METHOD_NAME" value="signUp" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuildingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PropertyManager" />
       <extension name="coverage">
         <pattern>
@@ -88,13 +153,20 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.BuildingTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in PropertyManager" />
+        <item itemvalue="JUnit.BuildingTest" />
+        <item itemvalue="JUnit.AuthenticationTest.signUp" />
+        <item itemvalue="JUnit.AuthenticationTest.logIn" />
+        <item itemvalue="JUnit.AuthenticationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -118,7 +190,10 @@
       <workItem from="1700217462596" duration="2750000" />
       <workItem from="1700332926965" duration="6769000" />
       <workItem from="1700546696041" duration="2923000" />
-      <workItem from="1700575831545" duration="22781000" />
+      <workItem from="1700575831545" duration="23092000" />
+      <workItem from="1700633054668" duration="4206000" />
+      <workItem from="1700641277650" duration="2212000" />
+      <workItem from="1700661304393" duration="12023000" />
     </task>
     <task id="LOCAL-00001" summary="started work on Property Management.">
       <option name="closed" value="true" />
@@ -136,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700346399791</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented Plumber and Electrician classes that extend abstract class - Worker. Also added the logic of calling employees by users.">
+      <option name="closed" value="true" />
+      <created>1700600310399</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700600310399</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +228,19 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="started work on Property Management." />
     <MESSAGE value="adding logic to find properties by their type from database" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding logic to find properties by their type from database" />
+    <MESSAGE value="Implemented Plumber and Electrician classes that extend abstract class - Worker. Also added the logic of calling employees by users." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Plumber and Electrician classes that extend abstract class - Worker. Also added the logic of calling employees by users." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PropertyManager$UserTest.ic" NAME="UserTest Coverage Results" MODIFIED="1700668643676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.user.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/PropertyManager$All_in_PropertyManager.ic" NAME="All in PropertyManager Coverage Results" MODIFIED="1700674035235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/PropertyManager$AuthenticationTest.ic" NAME="AuthenticationTest Coverage Results" MODIFIED="1700672159247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.user.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/PropertyManager$AuthenticationTest_signUp.ic" NAME="AuthenticationTest.signUp Coverage Results" MODIFIED="1700673650646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.user.*</FILTER>
+    </SUITE>
   </component>
 </project>

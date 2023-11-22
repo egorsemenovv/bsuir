@@ -2,6 +2,8 @@ package org.example.user;
 
 import org.example.Building;
 
+import java.util.Objects;
+
 public class Property {
     private int id;
     private int personId;
@@ -24,16 +26,10 @@ public class Property {
     }
 
     @Override
-    public String toString() {
-        return "Property{" +
-                "id=" + id +
-                ", personId=" + personId +
-                ", square=" + square +
-                ", floors=" + floors +
-                ", address='" + address + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", type=" + type +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Property property = (Property) o;
+        return id == property.id && personId == property.personId && square == property.square && floors == property.floors && Objects.equals(address, property.address) && Objects.equals(description, property.description) && Objects.equals(price, property.price) && type == property.type;
     }
 }

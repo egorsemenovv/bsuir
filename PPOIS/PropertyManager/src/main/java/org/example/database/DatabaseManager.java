@@ -9,7 +9,6 @@ import org.example.worker.Employee;
 import org.example.worker.Plumber;
 import org.example.worker.Worker;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -129,6 +128,20 @@ public class DatabaseManager {
             throw new RuntimeException(e);
         }
         return true;
+    }
+
+    public boolean deletePropertyFromDatabase(String address){
+        String sql = """
+                DELETE FROM property
+                where address = ?;
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, address);
+            return preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public List<Property> getPropertiesByType(Building buildingType){
@@ -393,6 +406,115 @@ public class DatabaseManager {
              var preparedStatement = connection.prepareStatement(sql)){
             preparedStatement.setBigDecimal(1, balance);
             preparedStatement.setInt(2, workerId);
+            return preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean setStatusForProperty(int userId, int propertyId , boolean status){
+        String sql = """
+                UPDATE property
+                SET for_sale = ?
+                WHERE id = ?;
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(2, propertyId);
+            preparedStatement.setBoolean(1, status);
+            return preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public java.math.BigDecimal getPropertyPrice(int propertyId) {
+        String sql = """
+                SELECT price
+                FROM property
+                WHERE id = ?;
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, propertyId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            return resultSet.getBigDecimal(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean setUserIdForProperty(int userId, int propertyId){
+        String sql = """
+                UPDATE property
+                SET person_id = ?
+                WHERE id = ?;
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, propertyId);
+            return preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getUserIdFromProperty(int propertyId){
+        String sql = """
+                SELECT person_id
+                FROM property
+                WHERE id = ?;
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)){
+            preparedStatement.setInt(1, propertyId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+
+    public boolean clearAllRequestedService(){
+        String sql = """
+                DELETE FROM service
+                where status = 'REQUESTED';
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)) {
+            return preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean deleteUserByUsername(String username){
+        String sql = """
+                DELETE FROM person
+                where username = ?;
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, username);
+            return preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean deleteWorkerByUsername(String username) {
+        String sql = """
+                DELETE FROM worker
+                where username = ?;
+                """;
+        try (var connection = DatabaseManager.open();
+             var preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, username);
             return preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
