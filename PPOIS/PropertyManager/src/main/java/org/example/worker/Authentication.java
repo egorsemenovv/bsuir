@@ -1,7 +1,8 @@
 package org.example.worker;
 
-import org.example.Password;
+import org.example.utils.Password;
 import org.example.database.DatabaseManager;
+import org.example.enums.Employee;
 
 import java.util.Optional;
 

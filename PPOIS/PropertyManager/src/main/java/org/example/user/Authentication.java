@@ -1,6 +1,6 @@
 package org.example.user;
 
-import org.example.Password;
+import org.example.utils.Password;
 import org.example.database.DatabaseManager;
 
 import java.util.Optional;

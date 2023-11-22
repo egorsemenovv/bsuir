@@ -1,4 +1,4 @@
-package org.example.worker;
+package org.example.enums;
 
 import java.math.BigDecimal;
 

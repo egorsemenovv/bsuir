@@ -1,7 +1,7 @@
 package org.example.worker;
 
-import org.example.Service;
-import org.example.database.DatabaseManager;
+import org.example.service.Service;
+import org.example.enums.Employee;
 
 import java.math.BigDecimal;
 import java.util.Optional;

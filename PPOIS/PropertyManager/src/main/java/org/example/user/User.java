@@ -1,9 +1,9 @@
 package org.example.user;
 
-import org.example.Building;
-import org.example.NotEnoughMoneyException;
+import org.example.enums.Building;
+import org.example.exceptions.NotEnoughMoneyException;
 import org.example.database.DatabaseManager;
-import org.example.worker.Employee;
+import org.example.enums.Employee;
 
 import java.math.BigDecimal;
 

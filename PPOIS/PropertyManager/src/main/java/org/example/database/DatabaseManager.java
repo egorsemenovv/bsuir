@@ -1,11 +1,12 @@
 package org.example.database;
 
-import org.example.Building;
-import org.example.Service;
+import org.example.enums.Building;
+import org.example.service.Service;
 import org.example.user.Property;
 import org.example.user.User;
+import org.example.utils.PropertiesUtil;
 import org.example.worker.Electrician;
-import org.example.worker.Employee;
+import org.example.enums.Employee;
 import org.example.worker.Plumber;
 import org.example.worker.Worker;
 

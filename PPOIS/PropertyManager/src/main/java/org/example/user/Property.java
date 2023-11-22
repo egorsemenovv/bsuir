@@ -1,6 +1,6 @@
 package org.example.user;
 
-import org.example.Building;
+import org.example.enums.Building;
 
 import java.util.Objects;
 

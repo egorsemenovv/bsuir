@@ -1,11 +1,11 @@
-package org.example;
+package org.example.enums;
 
+import org.example.enums.Building;
 import org.example.user.Property;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

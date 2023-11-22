@@ -1,7 +1,7 @@
 package org.example.user;
 
-import org.example.Building;
-import org.example.NotEnoughMoneyException;
+import org.example.enums.Building;
+import org.example.exceptions.NotEnoughMoneyException;
 import org.example.database.DatabaseManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.enums;
 
 import org.example.database.DatabaseManager;
 import org.example.user.Property;

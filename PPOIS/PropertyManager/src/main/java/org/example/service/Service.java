@@ -1,13 +1,13 @@
-package org.example;
+package org.example.service;
 
 import org.example.database.DatabaseManager;
-import org.example.worker.Employee;
+import org.example.enums.Employee;
 
 public class Service {
     private final DatabaseManager db = new DatabaseManager();
     private long id;
     private int propertyId;
-    private org.example.worker.Employee employee;
+    private Employee employee;
     private int workerId;
     private String status;
 

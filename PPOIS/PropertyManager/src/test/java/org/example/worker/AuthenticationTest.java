@@ -1,6 +1,7 @@
 package org.example.worker;
 
 import org.example.database.DatabaseManager;
+import org.example.enums.Employee;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
