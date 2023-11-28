@@ -1,11 +1,12 @@
 package org.example.worker;
 
-import org.example.database.DatabaseManager;
-
+import org.example.database.ServiceDatabase;
+import org.example.database.WorkerDatabase;
 import java.math.BigDecimal;
 
 public abstract class Worker {
-    protected final DatabaseManager db = new DatabaseManager();
+    protected final WorkerDatabase workerDatabase = new WorkerDatabase();
+    protected final ServiceDatabase serviceDatabase = new ServiceDatabase();
     private final int id;
     private final String username;
     private final String password;

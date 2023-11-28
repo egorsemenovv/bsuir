@@ -1,6 +1,6 @@
 package org.example.worker;
 
-import org.example.database.DatabaseManager;
+import org.example.database.WorkerDatabase;
 import org.example.enums.Employee;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +22,7 @@ class AuthenticationTest {
         assertFalse(authentication.signUp("Test", "12345user", Employee.ELECTRICIAN));
         assertFalse(authentication.signUp("Pavel Anatolievich", "12345user", Employee.ELECTRICIAN));
         assertTrue(authentication.signUp("Test", "12345user!", Employee.ELECTRICIAN));
-        DatabaseManager db = new DatabaseManager();
-        db.deleteWorkerByUsername("Test");
+        WorkerDatabase workerDatabase = new WorkerDatabase();
+        workerDatabase.deleteWorkerByUsername("Test");
     }
 }

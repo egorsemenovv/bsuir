@@ -1,6 +1,8 @@
 package org.example.worker;
 
 import org.example.database.DatabaseManager;
+import org.example.database.ServiceDatabase;
+import org.example.database.WorkerDatabase;
 import org.example.enums.Employee;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,12 +19,12 @@ public class PlumberTest {
             "C13HlZNn3j2hs/FtYtlYggdP7zPmHU+XAflKwU/jUPU=",
             new BigDecimal("100.00"),
             new BigDecimal("0.00"));
-    private static final DatabaseManager db = new DatabaseManager();
+    private static final WorkerDatabase workerDatabase = new WorkerDatabase();
+    private static final ServiceDatabase serviceDatabase = new ServiceDatabase();
 
     @BeforeAll
     static void startUp() {
-        db.addRequestForService(1, Employee.ELECTRICIAN);
-        db.addRequestForService(2, Employee.PLUMBER);
+        serviceDatabase.addRequestForService(2, Employee.PLUMBER);
     }
 
     @Test
@@ -39,6 +41,6 @@ public class PlumberTest {
 
     @AfterAll
     static void clear() {
-        db.updateBalanceForWorker(2, new BigDecimal("0.00"));
+        workerDatabase.updateBalanceForWorker(2, new BigDecimal("0.00"));
     }
 }

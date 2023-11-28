@@ -1,13 +1,12 @@
 package org.example.user;
 
+import org.example.database.ServiceDatabase;
+import org.example.database.UserDatabase;
 import org.example.enums.Building;
 import org.example.exceptions.NotEnoughMoneyException;
-import org.example.database.DatabaseManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
-
 import java.math.BigDecimal;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
@@ -24,7 +23,8 @@ class UserTest {
             "test@mail.com",
             new BigDecimal("0.00"));
 
-    private static final DatabaseManager db = new DatabaseManager();
+    private static final UserDatabase userDatabase = new UserDatabase();
+    private static final ServiceDatabase serviceDatabase = new ServiceDatabase();
     @Test
     void addProperty() {
         assertTrue(user1.addProperty(100,
@@ -68,8 +68,8 @@ class UserTest {
 
     @Test
     void buyProperty() {
-        db.setStatusForProperty(1, 1, true);
-        db.setStatusForProperty(2, 2, true);
+        userDatabase.setStatusForProperty(1, 1, true);
+        userDatabase.setStatusForProperty(2, 2, true);
         try {
             assertTrue(user1.buyProperty(2));
         } catch (NotEnoughMoneyException e) {
@@ -83,12 +83,12 @@ class UserTest {
 
     @AfterAll
     static void clear() {
-        db.deletePropertyFromDatabase("TestAddress");
-        db.clearAllRequestedService();
-        db.setStatusForProperty(1, 1, false);
-        db.setUserIdForProperty(1, 1);
-        db.setUserIdForProperty(2, 2);
-        db.updateBalanceForUser(1, new BigDecimal("999999999.00"));
-        db.updateBalanceForUser(1, new BigDecimal("0.00"));
+        userDatabase.deletePropertyFromDatabase("TestAddress");
+        serviceDatabase.clearAllRequestedService();
+        userDatabase.setStatusForProperty(1, 1, false);
+        userDatabase.setUserIdForProperty(1, 1);
+        userDatabase.setUserIdForProperty(2, 2);
+        userDatabase.updateBalanceForUser(1, new BigDecimal("999999999.00"));
+        userDatabase.updateBalanceForUser(1, new BigDecimal("0.00"));
     }
 }

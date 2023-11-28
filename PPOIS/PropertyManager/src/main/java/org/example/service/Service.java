@@ -1,17 +1,20 @@
 package org.example.service;
 
 import org.example.database.DatabaseManager;
+import org.example.database.ServiceDatabase;
 import org.example.enums.Employee;
+import org.example.enums.ServiceStatus;
+import org.example.worker.Worker;
 
 public class Service {
-    private final DatabaseManager db = new DatabaseManager();
+    private final ServiceDatabase serviceDatabase = new ServiceDatabase();
     private long id;
     private int propertyId;
     private Employee employee;
     private int workerId;
-    private String status;
+    private ServiceStatus status;
 
-    public Service(long id, int propertyId, Employee employee, int workerId, String status) {
+    public Service(long id, int propertyId, Employee employee, int workerId, ServiceStatus status) {
         this.id = id;
         this.propertyId = propertyId;
         this.employee = employee;
@@ -28,6 +31,6 @@ public class Service {
 
     @Override
     public String toString() {
-        return db.getAddressByPropertyId(this.propertyId);
+        return serviceDatabase.getAddressByPropertyId(this.propertyId);
     }
 }

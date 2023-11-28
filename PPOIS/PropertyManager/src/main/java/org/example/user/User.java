@@ -1,5 +1,7 @@
 package org.example.user;
 
+import org.example.database.ServiceDatabase;
+import org.example.database.UserDatabase;
 import org.example.enums.Building;
 import org.example.exceptions.NotEnoughMoneyException;
 import org.example.database.DatabaseManager;
@@ -8,7 +10,8 @@ import org.example.enums.Employee;
 import java.math.BigDecimal;
 
 public class User {
-    private final DatabaseManager db = new DatabaseManager();
+    private final UserDatabase userDatabase = new UserDatabase();
+    private final ServiceDatabase serviceDatabase = new ServiceDatabase();
     private int id;
     private String username;
     private String password;
@@ -37,7 +40,7 @@ public class User {
      * @return true if successful, false if not
      */
     public boolean addProperty(int square, int floors, String address, String description, java.math.BigDecimal price, Building building) {
-        return db.addPropertyToDatabase(this.id, square, floors, address, description, price, building);
+        return userDatabase.addPropertyToDatabase(this.id, square, floors, address, description, price, building);
     }
 
     /**
@@ -52,8 +55,8 @@ public class User {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nService price: " + Employee.PLUMBER.getPayment());
         }
         balance = balance.subtract(Employee.PLUMBER.getPayment());
-        db.updateBalanceForUser(this.id, balance);
-        db.addRequestForService(propertyID, Employee.PLUMBER);
+        userDatabase.updateBalanceForUser(this.id, balance);
+        serviceDatabase.addRequestForService(propertyID, Employee.PLUMBER);
         return true;
     }
 
@@ -69,8 +72,8 @@ public class User {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nService price: " + Employee.ELECTRICIAN.getPayment());
         }
         balance = balance.subtract(Employee.ELECTRICIAN.getPayment());
-        db.updateBalanceForUser(this.id, balance);
-        db.addRequestForService(propertyId, Employee.ELECTRICIAN);
+        userDatabase.updateBalanceForUser(this.id, balance);
+        serviceDatabase.addRequestForService(propertyId, Employee.ELECTRICIAN);
         return true;
     }
 
@@ -81,12 +84,12 @@ public class User {
      * @return true if successful, false if not
      */
     public boolean sellProperty(int propertyId) {
-        if (db.setStatusForProperty(this.id, propertyId, true)) {
+        if (userDatabase.setStatusForProperty(this.id, propertyId, true)) {
             return false;
         }
-        java.math.BigDecimal price = db.getPropertyPrice(propertyId);
+        java.math.BigDecimal price = userDatabase.getPropertyPrice(propertyId);
         balance = balance.add(price);
-        db.updateBalanceForUser(this.id, balance);
+        userDatabase.updateBalanceForUser(this.id, balance);
         return true;
     }
 
@@ -98,18 +101,18 @@ public class User {
      * @throws NotEnoughMoneyException
      */
     public boolean buyProperty(int propertyId) throws NotEnoughMoneyException {
-        java.math.BigDecimal price = db.getPropertyPrice(propertyId);
+        java.math.BigDecimal price = userDatabase.getPropertyPrice(propertyId);
         if (balance.compareTo(price) < 0) {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nProperty price is: " + price);
-        } else if (db.getUserIdFromProperty(propertyId) == this.id) {
+        } else if (userDatabase.getUserIdFromProperty(propertyId) == this.id) {
             System.out.println("It`s already your property");
             return false;
         }
         balance = balance.subtract(price);
-        db.updateBalanceForUser(this.id, balance);
-        db.setUserIdForProperty(this.id, propertyId);
-        db.setUserIdForProperty(this.id, propertyId);
-        db.setStatusForProperty(this.id, propertyId, false);
+        userDatabase.updateBalanceForUser(this.id, balance);
+        userDatabase.setUserIdForProperty(this.id, propertyId);
+        userDatabase.setUserIdForProperty(this.id, propertyId);
+        userDatabase.setStatusForProperty(this.id, propertyId, false);
         return true;
     }
 }

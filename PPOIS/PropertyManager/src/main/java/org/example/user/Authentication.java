@@ -1,13 +1,13 @@
 package org.example.user;
 
+import org.example.database.UserDatabase;
 import org.example.utils.Password;
-import org.example.database.DatabaseManager;
 
 import java.util.Optional;
 
 public class Authentication {
     public User user;
-    private static final DatabaseManager db = new DatabaseManager();
+    private static final UserDatabase userDatabase = new UserDatabase();
 
     /**
      * to log in into your account
@@ -21,7 +21,7 @@ public class Authentication {
             return false;
         }
         password = Password.encode(password);
-        Optional<User> opt = db.getUserFromDatabase(username, password);
+        Optional<User> opt = userDatabase.getUserFromDatabase(username, password);
         if (opt.isPresent()) {
             this.user = opt.get();
             return true;
@@ -41,6 +41,6 @@ public class Authentication {
         if (!Password.isAppropriate(password)) {
             return false;
         }
-        return db.addUserToDatabase(username, Password.encode(password), phoneNumber, email);
+        return userDatabase.addUserToDatabase(username, Password.encode(password), phoneNumber, email);
     }
 }

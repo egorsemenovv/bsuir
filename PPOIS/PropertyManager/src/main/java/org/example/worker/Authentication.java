@@ -1,14 +1,14 @@
 package org.example.worker;
 
+import org.example.database.WorkerDatabase;
 import org.example.utils.Password;
-import org.example.database.DatabaseManager;
 import org.example.enums.Employee;
 
 import java.util.Optional;
 
 public class Authentication {
     public Worker worker;
-    private final DatabaseManager db = new DatabaseManager();
+    private final WorkerDatabase workerDatabase = new WorkerDatabase();
 
     /**
      * to log in into your account
@@ -19,7 +19,7 @@ public class Authentication {
      */
     public boolean logIn(String username, String password) {
         password = Password.encode(password);
-        Optional<Worker> opt = db.getWorkerFromDatabase(username, password);
+        Optional<Worker> opt = workerDatabase.getWorkerFromDatabase(username, password);
         if (opt.isPresent()) {
             this.worker = opt.get();
             return true;
@@ -39,6 +39,6 @@ public class Authentication {
         if (!Password.isAppropriate(password)) {
             return false;
         }
-        return db.addWorkerToDatabase(username, Password.encode(password), employee);
+        return workerDatabase.addWorkerToDatabase(username, Password.encode(password), employee);
     }
 }

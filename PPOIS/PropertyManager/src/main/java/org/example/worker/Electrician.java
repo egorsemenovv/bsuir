@@ -1,5 +1,6 @@
 package org.example.worker;
 
+import org.example.enums.ServiceStatus;
 import org.example.service.Service;
 import org.example.enums.Employee;
 
@@ -14,7 +15,7 @@ public class Electrician extends Worker {
 
     public Electrician(int id, String username, String password, BigDecimal payment, BigDecimal balance) {
         super(id, username, password, payment, balance);
-        currentOrder = db.getWorkerOrder(id);
+        currentOrder = workerDatabase.getWorkerOrder(id);
     }
 
     /**
@@ -27,7 +28,7 @@ public class Electrician extends Worker {
         if(currentOrder.isPresent()){
             return false;
         }
-        Optional<Service> service = db.takeWork(super.getId(), type.getType());
+        Optional<Service> service = workerDatabase.takeWork(super.getId(), type);
         if(service.isPresent()){
             System.out.println("Electrician started work");
             currentOrder = service;
@@ -47,10 +48,10 @@ public class Electrician extends Worker {
         if(currentOrder.isEmpty()){
             return false;
         }
-        db.setStatusForWorker(super.getId(), false);
-        db.setStatusAndWorkerIdForService(currentOrder.get().getId(), super.getId(),"FINISHED");
+        workerDatabase.setStatusForWorker(super.getId(), false);
+        serviceDatabase.setStatusAndWorkerIdForService(currentOrder.get().getId(), super.getId(), ServiceStatus.FINISHED);
         super.setBalance(super.getBalance().add(Employee.ELECTRICIAN.getPayment()));
-        db.updateBalanceForWorker(super.getId(), super.getBalance());
+        workerDatabase.updateBalanceForWorker(super.getId(), super.getBalance());
         currentOrder = Optional.empty();
         return true;
     }
