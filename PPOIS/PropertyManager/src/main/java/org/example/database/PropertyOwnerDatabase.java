@@ -1,14 +1,14 @@
 package org.example.database;
 
 import org.example.enums.Building;
-import org.example.user.Property;
-import org.example.user.User;
+import org.example.propertyowner.Property;
+import org.example.propertyowner.PropertyOwner;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserDatabase {
+public class PropertyOwnerDatabase {
 
     /**
      * gets user from database
@@ -17,9 +17,9 @@ public class UserDatabase {
      * @param encodedPassword person`s password (encoded)
      * @return user if such exists
      */
-    public Optional<User> getUserFromDatabase(String username, String encodedPassword) {
+    public Optional<PropertyOwner> getUserFromDatabase(String username, String encodedPassword) {
 
-        Optional<User> user = Optional.empty();
+        Optional<PropertyOwner> user = Optional.empty();
         String sql = """
                 SELECT *
                 FROM person
@@ -31,7 +31,7 @@ public class UserDatabase {
             preparedStatement.setString(2, encodedPassword);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                user = Optional.of(new User(
+                user = Optional.of(new PropertyOwner(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),

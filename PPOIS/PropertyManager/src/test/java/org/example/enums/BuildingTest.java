@@ -1,6 +1,6 @@
 package org.example.enums;
 
-import org.example.user.Property;
+import org.example.propertyowner.Property;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

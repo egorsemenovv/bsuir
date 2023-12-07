@@ -1,6 +1,0 @@
-compilable => nrel_main_idtf: [компилируемый] (* <- lang_ru;; *);
-<- concept_type_of_execution;;
-interpreted => nrel_main_idtf: [интерпретируемый] (* <- lang_ru;; *);
-<- concept_type_of_execution;;
-mixed => nrel_main_idtf: [смешанный] (* <- lang_ru;; *);
-<- concept_type_of_execution;;

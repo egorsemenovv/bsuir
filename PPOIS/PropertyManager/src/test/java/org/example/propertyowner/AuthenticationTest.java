@@ -1,6 +1,6 @@
-package org.example.user;
+package org.example.propertyowner;
 
-import org.example.database.UserDatabase;
+import org.example.database.PropertyOwnerDatabase;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,7 +20,7 @@ class AuthenticationTest {
         assertFalse(authentication.signUp("Test", "12345user", "+375", "usertest@mail.com"));
         assertFalse(authentication.signUp("User Test", "12345user", "+375", "usertest@mail.com"));
         assertTrue(authentication.signUp("Test", "12345user!", "+375", "usertest@mail.com"));
-        UserDatabase userDatabase = new UserDatabase();
-        userDatabase.deleteUserByUsername("Test");
+        PropertyOwnerDatabase propertyOwnerDatabase = new PropertyOwnerDatabase();
+        propertyOwnerDatabase.deleteUserByUsername("Test");
     }
 }

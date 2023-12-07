@@ -1,4 +1,0 @@
-level_high => nrel_main_idtf: [высокоуровневый] (* <- lang_ru;; *);
-<- concept_level;;
-level_low => nrel_main_idtf: [низкоуровневый] (* <- lang_ru;; *);
-<- concept_level;;

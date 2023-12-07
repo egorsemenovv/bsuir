@@ -1,13 +1,13 @@
-package org.example.user;
+package org.example.propertyowner;
 
-import org.example.database.UserDatabase;
+import org.example.database.PropertyOwnerDatabase;
 import org.example.utils.Password;
 
 import java.util.Optional;
 
 public class Authentication {
-    public User user;
-    private static final UserDatabase userDatabase = new UserDatabase();
+    public PropertyOwner propertyOwner;
+    private static final PropertyOwnerDatabase PROPERTY_OWNER_DATABASE = new PropertyOwnerDatabase();
 
     /**
      * to log in into your account
@@ -21,9 +21,9 @@ public class Authentication {
             return false;
         }
         password = Password.encode(password);
-        Optional<User> opt = userDatabase.getUserFromDatabase(username, password);
+        Optional<PropertyOwner> opt = PROPERTY_OWNER_DATABASE.getUserFromDatabase(username, password);
         if (opt.isPresent()) {
-            this.user = opt.get();
+            this.propertyOwner = opt.get();
             return true;
         }
         return false;
@@ -41,6 +41,6 @@ public class Authentication {
         if (!Password.isAppropriate(password)) {
             return false;
         }
-        return userDatabase.addUserToDatabase(username, Password.encode(password), phoneNumber, email);
+        return PROPERTY_OWNER_DATABASE.addUserToDatabase(username, Password.encode(password), phoneNumber, email);
     }
 }

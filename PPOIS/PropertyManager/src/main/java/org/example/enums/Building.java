@@ -1,7 +1,7 @@
 package org.example.enums;
 
-import org.example.database.UserDatabase;
-import org.example.user.Property;
+import org.example.database.PropertyOwnerDatabase;
+import org.example.propertyowner.Property;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public enum Building {
     VILLA,
     MANSION,
     COTTAGE;
-    private final UserDatabase userDatabase = new UserDatabase();
+    private final PropertyOwnerDatabase propertyOwnerDatabase = new PropertyOwnerDatabase();
 
     /**
      * finds all buildings with such type
@@ -19,7 +19,7 @@ public enum Building {
      * @return list of properties
      */
     public List<Property> findAll() {
-        return userDatabase.getPropertiesByType(Building.this);
+        return propertyOwnerDatabase.getPropertiesByType(Building.this);
     }
 
 }

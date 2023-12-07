@@ -1,16 +1,15 @@
-package org.example.user;
+package org.example.propertyowner;
 
 import org.example.database.ServiceDatabase;
-import org.example.database.UserDatabase;
+import org.example.database.PropertyOwnerDatabase;
 import org.example.enums.Building;
 import org.example.exceptions.NotEnoughMoneyException;
-import org.example.database.DatabaseManager;
 import org.example.enums.Employee;
 
 import java.math.BigDecimal;
 
-public class User {
-    private final UserDatabase userDatabase = new UserDatabase();
+public class PropertyOwner {
+    private final PropertyOwnerDatabase propertyOwnerDatabase = new PropertyOwnerDatabase();
     private final ServiceDatabase serviceDatabase = new ServiceDatabase();
     private int id;
     private String username;
@@ -19,7 +18,7 @@ public class User {
     private String email;
     private java.math.BigDecimal balance;
 
-    public User(int id, String username, String password, String phoneNumber, String email, BigDecimal balance) {
+    public PropertyOwner(int id, String username, String password, String phoneNumber, String email, BigDecimal balance) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -40,7 +39,7 @@ public class User {
      * @return true if successful, false if not
      */
     public boolean addProperty(int square, int floors, String address, String description, java.math.BigDecimal price, Building building) {
-        return userDatabase.addPropertyToDatabase(this.id, square, floors, address, description, price, building);
+        return propertyOwnerDatabase.addPropertyToDatabase(this.id, square, floors, address, description, price, building);
     }
 
     /**
@@ -55,7 +54,7 @@ public class User {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nService price: " + Employee.PLUMBER.getPayment());
         }
         balance = balance.subtract(Employee.PLUMBER.getPayment());
-        userDatabase.updateBalanceForUser(this.id, balance);
+        propertyOwnerDatabase.updateBalanceForUser(this.id, balance);
         serviceDatabase.addRequestForService(propertyID, Employee.PLUMBER);
         return true;
     }
@@ -72,7 +71,7 @@ public class User {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nService price: " + Employee.ELECTRICIAN.getPayment());
         }
         balance = balance.subtract(Employee.ELECTRICIAN.getPayment());
-        userDatabase.updateBalanceForUser(this.id, balance);
+        propertyOwnerDatabase.updateBalanceForUser(this.id, balance);
         serviceDatabase.addRequestForService(propertyId, Employee.ELECTRICIAN);
         return true;
     }
@@ -84,12 +83,12 @@ public class User {
      * @return true if successful, false if not
      */
     public boolean sellProperty(int propertyId) {
-        if (userDatabase.setStatusForProperty(this.id, propertyId, true)) {
+        if (propertyOwnerDatabase.setStatusForProperty(this.id, propertyId, true)) {
             return false;
         }
-        java.math.BigDecimal price = userDatabase.getPropertyPrice(propertyId);
+        java.math.BigDecimal price = propertyOwnerDatabase.getPropertyPrice(propertyId);
         balance = balance.add(price);
-        userDatabase.updateBalanceForUser(this.id, balance);
+        propertyOwnerDatabase.updateBalanceForUser(this.id, balance);
         return true;
     }
 
@@ -101,18 +100,18 @@ public class User {
      * @throws NotEnoughMoneyException
      */
     public boolean buyProperty(int propertyId) throws NotEnoughMoneyException {
-        java.math.BigDecimal price = userDatabase.getPropertyPrice(propertyId);
+        java.math.BigDecimal price = propertyOwnerDatabase.getPropertyPrice(propertyId);
         if (balance.compareTo(price) < 0) {
             throw new NotEnoughMoneyException("Your balance: " + balance + "\nProperty price is: " + price);
-        } else if (userDatabase.getUserIdFromProperty(propertyId) == this.id) {
+        } else if (propertyOwnerDatabase.getUserIdFromProperty(propertyId) == this.id) {
             System.out.println("It`s already your property");
             return false;
         }
         balance = balance.subtract(price);
-        userDatabase.updateBalanceForUser(this.id, balance);
-        userDatabase.setUserIdForProperty(this.id, propertyId);
-        userDatabase.setUserIdForProperty(this.id, propertyId);
-        userDatabase.setStatusForProperty(this.id, propertyId, false);
+        propertyOwnerDatabase.updateBalanceForUser(this.id, balance);
+        propertyOwnerDatabase.setUserIdForProperty(this.id, propertyId);
+        propertyOwnerDatabase.setUserIdForProperty(this.id, propertyId);
+        propertyOwnerDatabase.setStatusForProperty(this.id, propertyId, false);
         return true;
     }
 }

@@ -1,4 +1,4 @@
-package org.example.user;
+package org.example.propertyowner;
 
 import org.example.enums.Building;
 
