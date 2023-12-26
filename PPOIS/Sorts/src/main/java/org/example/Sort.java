@@ -6,6 +6,13 @@ import org.example.exceptions.ElementIsNullException;
 import java.util.*;
 
 public class Sort {
+    /**
+     * "Shell" sort for array
+     * @param array input array to be sorted
+     * @param <T> Type of array
+     * @throws ElementIsNullException if one or more elements is null
+     * @throws ContainerIsNullException if container is empty or null
+     */
     public static <T extends Comparable<T>> void shellSort(T[] array) throws ElementIsNullException, ContainerIsNullException {
 
         if(array == null || array.length == 0){
@@ -36,6 +43,13 @@ public class Sort {
         }
     }
 
+    /**
+     * "Shell" sort for list
+     * @param list input list to be sorted
+     * @param <T> Type of list
+     * @throws ElementIsNullException if one or more elements is null
+     * @throws ContainerIsNullException if container is empty or null
+     */
     public static <T extends Comparable<T>> void shellSort(List<T> list) throws ElementIsNullException, ContainerIsNullException{
 
         if(list == null || list.isEmpty()){
@@ -65,7 +79,14 @@ public class Sort {
         }
     }
 
-    public static <T extends Numerable & Comparable<T>> void lsdRadixSort(T[] array) throws ElementIsNullException, ContainerIsNullException
+    /**
+     * "LSD Radix" sor for array
+     * @param array input array to be sorted
+     * @param <T> Type of array
+     * @throws ElementIsNullException if one or more elements is null
+     * @throws ContainerIsNullException if container is empty or null
+     */
+    public static <T extends Number> void lsdRadixSort(T[] array) throws ElementIsNullException, ContainerIsNullException
     {
         if(array == null || array.length == 0){
             throw new ContainerIsNullException("Array is null");
@@ -85,7 +106,7 @@ public class Sort {
                 if(item == null){
                     throw new ElementIsNullException("Element is null");
                 }
-                int bucket = (item.getValue() / expo) % 10;
+                int bucket = (item.intValue() / expo) % 10;
                 if (bucket > 0) {
                     sorted = false;
                 }
@@ -101,7 +122,14 @@ public class Sort {
         }
     }
 
-    public static <T extends Numerable & Comparable<T>> void lsdRadixSort(List<T> list) throws ElementIsNullException, ContainerIsNullException
+    /**
+     *
+     * @param list input list to be sorted
+     * @param <T> Type of List
+     * @throws ElementIsNullException if one or more elements is null
+     * @throws ContainerIsNullException if container is empty or null
+     */
+    public static <T extends Number> void lsdRadixSort(List<T> list) throws ElementIsNullException, ContainerIsNullException
     {
         if(list == null || list.isEmpty()){
             throw new ContainerIsNullException("List is null");
@@ -121,7 +149,7 @@ public class Sort {
                 if(item == null){
                     throw new ElementIsNullException("Element is null");
                 }
-                int bucket = (item.getValue() / expo) % 10;
+                int bucket = (item.intValue() / expo) % 10;
                 if (bucket > 0) {
                     sorted = false;
                 }
@@ -136,41 +164,4 @@ public class Sort {
                     list.set(index++, bucket.remove());
         }
     }
-
-    public static void lsdRadixSort(Number[] array) throws ElementIsNullException, ContainerIsNullException
-    {
-        if(array == null || array.length == 0){
-            throw new ContainerIsNullException("Array is null");
-        }
-
-        Queue<Number>[] buckets = new Queue[10];
-        for (int i = 0; i < 10; i++)
-            buckets[i] = new LinkedList<Number>();
-
-        boolean sorted = false;
-        int expo = 1;
-
-        while (!sorted) {
-            sorted = true;
-
-            for (Number item : array) {
-                if(item == null){
-                    throw new ElementIsNullException("Element is null");
-                }
-                int bucket = (item.intValue() / expo) % 10;
-                if (bucket > 0) {
-                    sorted = false;
-                }
-                buckets[bucket].add(item);
-            }
-
-            expo *= 10;
-            int index = 0;
-
-            for (Queue<Number> bucket : buckets)
-                while (!bucket.isEmpty())
-                    array[index++] = bucket.remove();
-        }
-    }
-
 }

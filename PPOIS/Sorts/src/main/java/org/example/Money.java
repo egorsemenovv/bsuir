@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class Money implements Comparable<Money>, Numerable{
+public class Money extends Number implements Comparable<Money>{
     private final int value;
 
     public Money(int value) {
@@ -11,12 +11,27 @@ public class Money implements Comparable<Money>, Numerable{
 
     @Override
     public int compareTo(Money o) {
-        return Integer.compare(value, o.getValue());
+        return Integer.compare(value, o.intValue());
     }
 
     @Override
-    public int getValue() {
+    public int intValue() {
         return value;
+    }
+
+    @Override
+    public long longValue() {
+        return (long) value;
+    }
+
+    @Override
+    public float floatValue() {
+        return (float) value;
+    }
+
+    @Override
+    public double doubleValue() {
+        return (double) value;
     }
 
     @Override

@@ -258,5 +258,32 @@ class SortTest {
         });
 
         assertEquals("Element is null", thrown2.getMessage());
+
+        List<Integer> integerList = new ArrayList<>();
+        integerList.add(11);
+        integerList.add(15);
+        integerList.add(36);
+        integerList.add(42);
+        integerList.add(17);
+        integerList.add(39);
+        integerList.add(56);
+        integerList.add(22);
+        integerList.add(5);
+        integerList.add(7);
+
+        List<Integer> integerListSorted = new ArrayList<>();
+        integerListSorted.add(5);
+        integerListSorted.add(7);
+        integerListSorted.add(11);
+        integerListSorted.add(15);
+        integerListSorted.add(17);
+        integerListSorted.add(22);
+        integerListSorted.add(36);
+        integerListSorted.add(39);
+        integerListSorted.add(42);
+        integerListSorted.add(56);
+
+        Sort.lsdRadixSort(integerList);
+        assertEquals(integerList, integerListSorted);
     }
 }
